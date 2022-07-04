@@ -1,9 +1,7 @@
 local opt = vim.opt
 local g = vim.g
 
-g.catppuccin_flavour = "mocha"
-
-g.mapleader = "<space>"
+g.mapleader = " "
 
 opt.laststatus = 3 -- global statusline
 opt.showmode = true

@@ -4,6 +4,12 @@ local plugins = {
   { "nvim-lua/plenary.nvim", module = "plenary" },
   { "wbthomason/packer.nvim" },
   { "rcarriga/nvim-notify" },
+  { "hood/popui.nvim",
+    requires = { "RishabhRD/popfix" },
+    config = function ()
+      require "plugins.cfgs.popui"
+    end
+  },
   { "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate"
   },
@@ -62,10 +68,7 @@ local plugins = {
     end
   },
   { "nvim-telescope/telescope-project.nvim" },
-  { "nvim-telescope/telescope-file-browser.nvim" },
   { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-  { "nvim-telescope/telescope-dap.nvim" },
-  { "benfowler/telescope-luasnip.nvim" },
 
   -- Lsp & autocompletition stuff
   { "hrsh7th/nvim-cmp",
@@ -78,13 +81,12 @@ local plugins = {
   { "hrsh7th/cmp-path" },
   { "saadparwaiz1/cmp_luasnip" },
   { "jose-elias-alvarez/null-ls.nvim" },
-  { "folke/trouble.nvim",
-    config = function ()
-      require "plugins.cfgs.trouble"
-    end
-  },
   { "L3MON4D3/LuaSnip" },
   { "mfussenegger/nvim-dap" },
+  { "ravenxrz/DAPInstall.nvim",
+    as = "nvim-dap-installer",
+  },
+  { "rcarriga/nvim-dap-ui" },
   { "williamboman/nvim-lsp-installer" },
   { "neovim/nvim-lspconfig",
     after = "nvim-lsp-installer",
