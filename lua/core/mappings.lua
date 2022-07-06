@@ -27,5 +27,27 @@ M.bufferline = {
     ["<leader>p"] = "<Plug>(cokeline-switch-prev)",
     ["<leader>n"] = "<Plug>(cokeline-switch-next)",
   }
+
 }
+
+M.telescope = {
+  n = {
+    ["<leader>tf"] = "<cmd>lua require'telescope.builtin'.find_files()<cr>",
+    ["<leader>tt"] = "<cmd>lua require'telescope.builtin'.treesitter()<cr>",
+    ["<leader>tp"] = "<cmd>lua require'telescope'.extensions.project.project()<cr>",
+  }
+}
+
+M.dirbuf = {
+  n = {
+    ["<leader>e"] = function ()
+      if vim.bo.filetype == 'dirbuf' then
+        vim.cmd [[ DirbufQuit ]]
+      else
+        vim.cmd [[ Dirbuf ]]
+      end
+    end,
+  }
+}
+
 return M

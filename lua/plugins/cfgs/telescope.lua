@@ -1,6 +1,17 @@
 local telescope = require "telescope"
+local utils = require "core.utils"
+local mappings = require "core.mappings"
+
 telescope.setup {
   defaults = {
+    borderchars = {"█","█","█","█","█","█","█","█"},
+    border = true,
+    layout_strategy = "vertical",
+    layout_config = {
+      width = 0.5,
+      height = 0.3,
+      prompt_position = "top"
+    },
     mappings = {
       i = {
       }
@@ -27,3 +38,5 @@ telescope.setup {
 
 telescope.load_extension "fzf"
 telescope.load_extension "project"
+
+utils.load_mappings(mappings.telescope, { noremap = true, silent = true })

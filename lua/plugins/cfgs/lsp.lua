@@ -5,6 +5,10 @@ local mappings = require "core.mappings"
 
 local servers = { "sumneko_lua" }
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+}
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 local on_attach = function(_, bufnr)

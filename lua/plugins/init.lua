@@ -1,24 +1,40 @@
 vim.cmd "packadd packer.nvim"
 
 local plugins = {
-  { "nvim-lua/plenary.nvim", module = "plenary" },
   { "wbthomason/packer.nvim" },
-  { "rcarriga/nvim-notify" },
-  { "hood/popui.nvim",
-    requires = { "RishabhRD/popfix" },
-    config = function ()
-      require "plugins.cfgs.popui"
-    end
-  },
+  { "kevinhwang91/promise-async" },
+  { "nvim-lua/plenary.nvim", module = "plenary" },
   { "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate"
   },
 
-  -- UI
-  { "kyazdani42/nvim-web-devicons", module = "nvim-web-devicons" },
-  { "navarasu/onedark.nvim",
+  -- theme
+  { "rebelot/kanagawa.nvim",
     config = function ()
       require "plugins.cfgs.theme"
+    end
+  },
+
+  -- UI
+  { "kyazdani42/nvim-web-devicons", module = "nvim-web-devicons" },
+  { "elihunter173/dirbuf.nvim",
+    config = function ()
+      require "plugins.cfgs.dirbuf"
+    end
+  },
+  { "stevearc/dressing.nvim",
+    config = function ()
+      require "plugins.cfgs.dressing"
+    end
+  },
+  { "folke/todo-comments.nvim",
+    config = function ()
+      require "todo-comments".setup {}
+    end
+  },
+  { "lukas-reineke/indent-blankline.nvim",
+    config = function ()
+      require "plugins.cfgs.ib"
     end
   },
   { "noib3/nvim-cokeline",
@@ -63,30 +79,39 @@ local plugins = {
 
   -- Telescope
   { "nvim-telescope/telescope.nvim",
+    requires = {
+      { "nvim-telescope/telescope-project.nvim" },
+      { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+    },
     config = function ()
       require "plugins.cfgs.telescope"
     end
   },
-  { "nvim-telescope/telescope-project.nvim" },
-  { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 
   -- Lsp & autocompletition stuff
   { "hrsh7th/nvim-cmp",
+    requires = {
+      { "hrsh7th/cmp-nvim-lsp" },
+      { "hrsh7th/cmp-nvim-lua" },
+      { "hrsh7th/cmp-path" },
+      { "saadparwaiz1/cmp_luasnip" },
+      { "L3MON4D3/LuaSnip" },
+    },
     config = function()
       require "plugins.cfgs.cmp"
     end,
   },
-  { "hrsh7th/cmp-nvim-lsp" },
-  { "hrsh7th/cmp-nvim-lua" },
-  { "hrsh7th/cmp-path" },
-  { "saadparwaiz1/cmp_luasnip" },
   { "jose-elias-alvarez/null-ls.nvim" },
-  { "L3MON4D3/LuaSnip" },
-  { "mfussenegger/nvim-dap" },
-  { "ravenxrz/DAPInstall.nvim",
-    as = "nvim-dap-installer",
+  { "mfussenegger/nvim-dap",
+    requires = {
+      { "ravenxrz/DAPInstall.nvim",
+      },
+      { "rcarriga/nvim-dap-ui" },
+    },
+    config = function ()
+      require "plugins.cfgs.dap"
+    end
   },
-  { "rcarriga/nvim-dap-ui" },
   { "williamboman/nvim-lsp-installer" },
   { "neovim/nvim-lspconfig",
     after = "nvim-lsp-installer",
@@ -95,6 +120,9 @@ local plugins = {
       require "plugins.cfgs.lsp"
     end,
   },
+
+  -- Misc
+  { "frabjous/knap" },
 }
 
 require("core.packer").run(plugins)
