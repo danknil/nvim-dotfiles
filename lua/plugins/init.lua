@@ -1,11 +1,15 @@
 vim.cmd "packadd packer.nvim"
 
+local mappings = require "core.mappings"
+
 local plugins = {
   { "wbthomason/packer.nvim" },
-  { "kevinhwang91/promise-async" },
   { "nvim-lua/plenary.nvim", module = "plenary" },
   { "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate"
+    run = ":TSUpdate",
+    config = function ()
+      -- TODO: add cfg
+    end
   },
 
   -- theme
@@ -15,13 +19,18 @@ local plugins = {
     end
   },
 
-  -- UI
-  { "kyazdani42/nvim-web-devicons", module = "nvim-web-devicons" },
-  { "elihunter173/dirbuf.nvim",
+  -- Misc
+  { "frabjous/knap",
     config = function ()
-      require "plugins.cfgs.dirbuf"
+      -- TODO: add cfg
     end
   },
+  { "EthanJWright/vs-tasks.nvim",
+    config = function ()
+      -- TODO: add cfg
+    end
+  },
+  { "kyazdani42/nvim-web-devicons", module = "nvim-web-devicons" },
   { "stevearc/dressing.nvim",
     config = function ()
       require "plugins.cfgs.dressing"
@@ -40,6 +49,7 @@ local plugins = {
   { "noib3/nvim-cokeline",
     config = function ()
       require "plugins.cfgs.bufferline"
+      mappings.load_mappings(mappings.bufferline, { silent = true })
     end
   },
   { "nvim-lualine/lualine.nvim",
@@ -59,7 +69,9 @@ local plugins = {
   },
 
   -- Additional moving functionality plugins
+  -- HACK: replace with nvim-surround when ready(https://github.com/kylechui/nvim-surround)
   { "tpope/vim-surround" },
+  -- HACK: find lua replacement
   { "tpope/vim-repeat" },
   { "ggandor/leap.nvim",
     config = function ()
@@ -71,11 +83,6 @@ local plugins = {
       require "plugins.cfgs.comment"
     end,
   },
-  { "max397574/better-escape.nvim",
-    config = function ()
-      require "plugins.cfgs.betterescape"
-    end,
-  },
 
   -- Telescope
   { "nvim-telescope/telescope.nvim",
@@ -85,10 +92,11 @@ local plugins = {
     },
     config = function ()
       require "plugins.cfgs.telescope"
+      mappings.load_mappings(mappings.telescope, { silent = true })
     end
   },
 
-  -- Lsp & autocompletition stuff
+  -- Language support
   { "hrsh7th/nvim-cmp",
     requires = {
       { "hrsh7th/cmp-nvim-lsp" },
@@ -101,15 +109,18 @@ local plugins = {
       require "plugins.cfgs.cmp"
     end,
   },
-  { "jose-elias-alvarez/null-ls.nvim" },
+  { "jose-elias-alvarez/null-ls.nvim",
+    config = function ()
+      -- TODO: add cfg
+    end
+  },
   { "mfussenegger/nvim-dap",
     requires = {
-      { "ravenxrz/DAPInstall.nvim",
-      },
+      { "ravenxrz/DAPInstall.nvim" },
       { "rcarriga/nvim-dap-ui" },
     },
     config = function ()
-      require "plugins.cfgs.dap"
+      -- TODO: add cfg
     end
   },
   { "williamboman/nvim-lsp-installer" },
@@ -120,9 +131,11 @@ local plugins = {
       require "plugins.cfgs.lsp"
     end,
   },
-
-  -- Misc
-  { "frabjous/knap" },
+  { "jakewvincent/texmagic.nvim",
+    config = function ()
+      -- TODO: add cfg
+    end
+  },
 }
 
 require("core.packer").run(plugins)

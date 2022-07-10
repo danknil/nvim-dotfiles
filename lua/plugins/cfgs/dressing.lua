@@ -11,8 +11,8 @@ require "dressing".setup {
 
     -- These are passed to nvim_open_win
     anchor = "SW",
-    border = "rounded",
-    relative = "cursor",
+    border = "none",
+    relative = "win",
 
     winblend = 0,
     -- Change default highlight groups (see :help winhl)

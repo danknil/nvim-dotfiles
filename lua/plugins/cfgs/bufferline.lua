@@ -1,6 +1,4 @@
 local get_hex = require("cokeline/utils").get_hex
-local utils = require "core.utils"
-local mappings = require "core.mappings"
 
 require("cokeline").setup({
   show_if_buffers_are_at_least = 2,
@@ -46,5 +44,3 @@ require("cokeline").setup({
     },
   },
 })
-
-utils.load_mappings(mappings.bufferline, { silent = true })

@@ -3,7 +3,7 @@ local g = vim.g
 
 g.mapleader = " "
 
-opt.laststatus = 3 -- global statusline
+opt.laststatus = 3
 opt.showmode = true
 
 opt.title = true

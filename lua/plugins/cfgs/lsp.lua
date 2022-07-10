@@ -1,6 +1,5 @@
 local lspconfig = require "lspconfig"
 local lspinstall = require "nvim-lsp-installer"
-local utils = require "core.utils"
 local mappings = require "core.mappings"
 
 local servers = { "sumneko_lua" }
@@ -15,7 +14,7 @@ local on_attach = function(_, bufnr)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  utils.load_mappings(mappings.lsp, bufopts)
+  mappings.load_mappings(mappings.lsp, bufopts)
 end
 
 for _, lsp in ipairs(servers) do

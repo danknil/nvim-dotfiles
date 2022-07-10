@@ -1,5 +1,34 @@
 local M = {}
 
+M.load_mappings = function(mappings, opts)
+  for mode, mappings_list in pairs(mappings) do
+    for mapping, func in pairs(mappings_list) do
+      vim.keymap.set(mode, mapping, func, opts)
+    end
+  end
+end
+
+M.general = {
+  i = {
+    ["<C-i>"] = "<Esc>",
+
+    ["<C-h>"] = "<Left>",
+    ["<C-j>"] = "<Down>",
+    ["<C-k>"] = "<Up>",
+    ["<C-l>"] = "<Right>",
+  },
+  n = {
+    ["<space>"] = "<cmd>noh<cr>",
+
+    ["<C-h>"] = "<C-w>h",
+    ["<C-j>"] = "<C-w>j",
+    ["<C-k>"] = "<C-w>k",
+    ["<C-l>"] = "<C-w>l",
+
+    ["<C-c>"] = "<cmd>%y+<cr>",
+  }
+}
+
 M.lsp = {
   n = {
     ["gD"] = vim.lsp.buf.declaration,
@@ -9,7 +38,7 @@ M.lsp = {
     ["<C-k>"] = vim.lsp.buf.signature_help,
     ["<leader>wa"] = vim.lsp.buf.add_workspace_folder,
     ["<leader>wr"] = vim.lsp.buf.remove_workspace_folder,
-    ["<leader>wl"] = function ()
+    ["<leader>wl"] = function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end,
     ["<leader>D"] = vim.lsp.buf.type_definition,
@@ -38,16 +67,24 @@ M.telescope = {
   }
 }
 
-M.dirbuf = {
+M.vstask = {
   n = {
-    ["<leader>e"] = function ()
-      if vim.bo.filetype == 'dirbuf' then
-        vim.cmd [[ DirbufQuit ]]
-      else
-        vim.cmd [[ Dirbuf ]]
-      end
-    end,
+    ["<leader>ta"] = "<cmd>lua require'telescope'.extensions.vstask.tasks()<cr>",
+    ["<leader>ti"] = "<cmd>lua require'telescope'.extensions.vstask.inputs()<cr>",
+    ["<leader>tc"] = "<cmd>lua require'telescope'.extensions.vstask.close()<cr>",
   }
 }
+
+-- M.carbon = {
+--   n = {
+--     ["<leader>e"] = function()
+--       if vim.bo.filetype == "carbon" then
+--         vim.cmd [[ bdelete ]]
+--       else
+--         vim.cmd [[ Fc ]]
+--       end
+--     end,
+--   }
+-- }
 
 return M
