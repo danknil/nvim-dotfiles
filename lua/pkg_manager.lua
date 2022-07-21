@@ -37,6 +37,7 @@ local pkgs = {
   "hrsh7th/cmp-nvim-lsp";
   "hrsh7th/cmp-buffer";
   "hrsh7th/cmp-path";
+  "folke/lua-dev.nvim";
 
   -- Telescope
   "nvim-telescope/telescope.nvim";

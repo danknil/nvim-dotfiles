@@ -57,10 +57,9 @@ cmp.setup {
     end, { 'i', 's' }),
   }),
   sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-    { name = "nvim_lua" },
-    { name = "path" },
-    { name = "buffer" },
+    { name = "luasnip", priority = 4, max_item_count = 4 },
+    { name = "nvim_lsp", priority = 3, max_item_count = 6 },
+    { name = "path", priority = 5, max_item_count = 2 },
+    { name = "buffer", priority = 2, keyword_length = 4, max_item_count = 2 },
   },
 }

@@ -38,7 +38,11 @@ local on_attach = function(client, bufnr)
   maps:load_mappings("lsp", bufopts)
 end
 
-lspconfig.sumneko_lua.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
+local luadev = require "lua-dev".setup {
+  lsp_config = {
+    capabilities = capabilities,
+    on_attach = on_attach,
+  }
 }
+
+lspconfig.sumneko_lua.setup(luadev)
