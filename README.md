@@ -3,7 +3,7 @@
 
 ## How to install
   1. clone this repo in your config folder(*example*): `git clone https://github.com/danknil/nvim-dotfiles.git ~/.config/nvim`
-  2. Run `nvim -c "PaqSetup"`
+  2. Run your nvim!
 
 ## Todo
   - [x] Beta release

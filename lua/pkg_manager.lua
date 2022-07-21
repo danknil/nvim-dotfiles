@@ -1,3 +1,4 @@
+local path = vim.fn.stdpath('data') .. "/site/pack/paqs/start/paq-nvim"
 local pkgs = {
   "savq/paq-nvim";
 
@@ -60,20 +61,17 @@ local pkgs = {
   "jghauser/mkdir.nvim";
 }
 local function clone_paq()
-  local path = vim.fn.stdpath('data') .. '/site/pack/paqs/start/paq-nvim'
-  if vim.fn.empty(vim.fn.glob(path)) > 0 then
-    vim.fn.system {
-      'git',
-      'clone',
-      '--depth=1',
-      'https://github.com/savq/paq-nvim.git',
-      path
-    }
-  end
+  print("cloning paq...")
+  vim.fn.system {
+    'git',
+    'clone',
+    '--depth=1',
+    'https://github.com/savq/paq-nvim.git',
+    path
+  }
 end
 
 function bootstrap()
-  clone_paq()
   -- Load Paq
   vim.cmd('packadd paq-nvim')
   local paq = require('paq')
@@ -82,5 +80,10 @@ function bootstrap()
   paq.install()
 end
 
+
+if vim.fn.empty(vim.fn.glob(path)) > 0 then
+  clone_paq()
+  bootstrap()
+end
 vim.api.nvim_create_user_command("PaqSetup", bootstrap, { nargs = 0 })
 return { bootstrap = bootstrap }

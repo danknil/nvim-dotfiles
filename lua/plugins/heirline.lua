@@ -138,11 +138,11 @@ local FileName = {
 
 local FileFlags = {
     {
-        provider = function() if vim.bo.modified then return "[+]" end end,
+        provider = function() if vim.bo.modified then return "[+] " end end,
         hl = { fg = "green" }
 
     }, {
-        provider = function() if (not vim.bo.modifiable) or vim.bo.readonly then return "" end end,
+        provider = function() if (not vim.bo.modifiable) or vim.bo.readonly then return " " end end,
         hl = { fg = "orange" }
     }
 }
