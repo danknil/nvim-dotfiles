@@ -6,14 +6,14 @@
   2. Run `nvim -c "PaqSetup"`
 
 ## Todo
-  - [x] Beta release
-  - [] Improve support for go, c, rust, latex(snippets and lsp)
-  - [] Add some null-ls stuff
-  - [] Make a config for dap
-  - [] Make statusline looks better
-  - [] Add keybinds for other plugins
+  [x] Beta release
+  [] Improve support for go, c, rust, latex(snippets and lsp)
+  [] Add some null-ls stuff
+  [] Make a config for dap
+  [] Make statusline looks better
+  [] Add keybinds for other plugins
 
 ## Maybe
-  - [] Feature showcase?
-  - [] Lazy loading?
-  - [] Windows support?
+  [] Feature showcase?
+  [] Lazy loading?
+  [] Windows support?
