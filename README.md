@@ -12,6 +12,8 @@
   - [ ] Make a config for dap
   - [ ] Make statusline looks better
   - [ ] Add keybinds for other plugins
+  - [ ] Fix cursorword
+  - [ ] Fix autocommands
 
 ## Maybe
   - [ ] Feature showcase?
