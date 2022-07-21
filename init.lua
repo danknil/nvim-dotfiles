@@ -1,8 +1,8 @@
-local maps = require "core.mappings"
+local maps = require "mappings"
 
-require("core.packer").bootstrap()
+require "autocmds"
+require "options"
+require "pkg_manager"
 require "plugins"
 
-require "core.options"
-
-maps.load_mappings(maps.general, { silent = true })
+maps:load_mappings("general", { silent = true, noremap = true })

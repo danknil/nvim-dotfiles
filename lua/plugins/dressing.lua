@@ -11,7 +11,7 @@ require "dressing".setup {
 
     -- These are passed to nvim_open_win
     anchor = "SW",
-    border = "none",
+    border = "single",
     relative = "win",
 
     winblend = 0,
@@ -32,7 +32,7 @@ require "dressing".setup {
     enabled = true,
 
     -- Priority list of preferred vim.select implementations
-    backend = { "telescope", "fzf_lua", "fzf", "builtin", "nui" },
+    backend = { "builtin", "telescope", "fzf_lua", "fzf", "nui" },
 
     -- Trim trailing `:` from prompt
     trim_prompt = true,

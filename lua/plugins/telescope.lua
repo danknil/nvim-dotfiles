@@ -1,3 +1,4 @@
+local maps = require "mappings"
 local telescope = require "telescope"
 
 telescope.setup {
@@ -37,3 +38,6 @@ telescope.setup {
 
 telescope.load_extension "fzf"
 telescope.load_extension "project"
+telescope.load_extension "luasnip"
+
+maps:load_mappings("telescope", { silent = true, noremap = true })

@@ -2,9 +2,10 @@ local opt = vim.opt
 local g = vim.g
 
 g.mapleader = " "
+g.netrw_banner = 0
 
 opt.laststatus = 3
-opt.showmode = true
+opt.showmode = false
 
 opt.title = true
 opt.clipboard = "unnamedplus"
@@ -17,7 +18,7 @@ opt.smartindent = true
 opt.fillchars = { eob = " " }
 opt.ignorecase = true
 opt.smartcase = true
-opt.mouse = "a"
+opt.mouse = "nv"
 
 -- Numbers
 opt.number = true
@@ -26,7 +27,7 @@ opt.numberwidth = 2
 opt.ruler = false
 
 -- disable nvim intro
-opt.shortmess:append "sI"
+opt.shortmess:append "FcsI"
 
 opt.signcolumn = "yes"
 opt.splitbelow = true
