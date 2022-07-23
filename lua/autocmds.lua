@@ -1,16 +1,38 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
+local function autocmd_on_type(tb)
+    if type(tb.filetype) == 'string' then
+        tb.filetype = { tb.filetype }
+    end
+    autocmd('BufEnter', {
+        group = tb.group,
+        callback = function()
+            if vim.tbl_contains(tb.filetype, vim.bo.filetype) then
+                tb.callback()
+            end
+        end,
+    })
+end
+
 augroup('numbs', { clear = true })
 autocmd('InsertEnter', {
     group = 'numbs',
-    pattern = '*.*',
-    command = 'set nonumber | set norelativenumber',
+    callback = function()
+        if vim.bo.filetype ~= nil then
+            vim.opt.number = false
+            vim.opt.relativenumber = false
+        end
+    end,
 })
 autocmd('InsertLeave', {
     group = 'numbs',
-    pattern = '*.*',
-    command = 'set number | set relativenumber',
+    callback = function()
+        if vim.bo.filetype ~= nil then
+            vim.opt.number = true
+            vim.opt.relativenumber = true
+        end
+    end,
 })
 
 -- augroup("autowrite", { clear = true })
@@ -21,23 +43,21 @@ autocmd('InsertLeave', {
 -- })
 
 augroup('tabs', { clear = true })
-autocmd('BufEnter', {
+autocmd_on_type {
+    filetype = 'lua',
     group = 'tabs',
     callback = function()
-        if vim.tbl_contains({ 'lua' }, vim.bo.filetype) then
-            vim.opt.expandtab = true
-            vim.opt.shiftwidth = 4
-            vim.opt.smartindent = true
-        end
+        vim.opt.expandtab = true
+        vim.opt.shiftwidth = 4
+        vim.opt.smartindent = true
     end,
-})
-autocmd('BufEnter', {
+}
+autocmd_on_type {
+    filetype = { 'c', 'go' },
     group = 'tabs',
     callback = function()
-        if vim.tbl_contains({ 'go' }, vim.bo.filetype) then
-            vim.opt.expandtab = true
-            vim.opt.shiftwidth = 8
-            vim.opt.smartindent = true
-        end
+        vim.opt.expandtab = true
+        vim.opt.shiftwidth = 8
+        vim.opt.smartindent = true
     end,
-})
+}

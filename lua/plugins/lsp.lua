@@ -42,9 +42,6 @@ local on_attach = function(client, bufnr)
 end
 
 local luadev = require('lua-dev').setup {
-    library = {
-        plugins = false,
-    },
     runtime_path = false,
     lsp_config = {
         capabilities = capabilities,
@@ -57,18 +54,28 @@ lspconfig.gopls.setup {
     capabilities = capabilities,
     on_attach = on_attach,
 }
-
-nls.setup {
+lspconfig.clangd.setup {
+    capabilities = capabilities,
     on_attach = on_attach,
 }
 
-local go_source = {
-    nls.builtins.diagnostics.revive,
-    nls.builtins.formatting.gofmt,
-    nls.builtins.formatting.goimports,
-    nls.builtins.formatting.golines,
+require('null-ls').setup {
+    on_attach = on_attach,
 }
-nls.register(go_source)
+local c_sources = {
+    nls.builtins.diagnostics.cppcheck,
+    nls.builtins.formatting.clang_format,
+}
+
+local go_sources = {
+    nls.builtins.formatting.golines,
+    nls.builtins.formatting.goimports,
+    nls.builtins.formatting.gofmt,
+    nls.builtins.diagnostics.staticcheck,
+}
+
+nls.register(c_sources)
+nls.register(go_sources)
 nls.register(nls.builtins.code_actions.gitsigns)
 nls.register(nls.builtins.code_actions.proselint)
 nls.register(nls.builtins.formatting.stylua)
