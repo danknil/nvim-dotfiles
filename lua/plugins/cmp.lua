@@ -1,6 +1,4 @@
-local lspconfig = require 'lspconfig'
-local lspinstall = require 'nvim-lsp-installer'
-local maps = require 'mappings'
+---@diagnostic disable: missing-parameter
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 
@@ -32,20 +30,32 @@ cmp.setup {
     mapping = cmp.mapping.preset.insert {
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm {
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
         },
+        ['<C-Space>'] = cmp.mapping.select_next_item {
+            behavior = cmp.SelectBehavior.Select,
+        },
         ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
-                cmp.select_next_item()
+                local entry = cmp.get_selected_entry()
+                if not entry then
+                    if not luasnip.expand_or_jumpable() then
+                        cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
+                        cmp.confirm { behavior = cmp.ConfirmBehavior.Replace }
+                    else
+                        luasnip.expand_or_jump()
+                    end
+                else
+                    cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
+                end
             elseif luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
             else
                 fallback()
             end
-        end, { 'i', 's' }),
+        end, { 'i', 's', 'c' }),
         ['<S-Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
@@ -54,12 +64,12 @@ cmp.setup {
             else
                 fallback()
             end
-        end, { 'i', 's' }),
+        end, { 'i', 's', 'c' }),
     },
     sources = {
-        { name = 'luasnip', priority = 4, max_item_count = 4 },
-        { name = 'nvim_lsp', priority = 3, max_item_count = 6 },
         { name = 'path', priority = 5, max_item_count = 2 },
-        { name = 'buffer', priority = 2, keyword_length = 4, max_item_count = 2 },
+        { name = 'luasnip', priority = 4, max_item_count = 4 },
+        { name = 'nvim_lsp', priority = 3, max_item_count = 8 },
+        { name = 'buffer', priority = 2, keyword_length = 2, max_item_count = 4 },
     },
 }

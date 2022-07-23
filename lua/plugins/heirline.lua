@@ -1,3 +1,4 @@
+---@diagnostic disable: unused-local
 local conditions = require 'heirline.conditions'
 local utils = require 'heirline.utils'
 local colors = {
@@ -203,7 +204,7 @@ local Git = {
 
     hl = { fg = 'orange' },
 
-    { provider = '[ ' },
+    { provider = '[' },
     { -- git branch name
         provider = function(self)
             return self.status_dict.head
@@ -244,7 +245,7 @@ local Git = {
         end,
         provider = ')',
     },
-    { provider = ' ]' },
+    { provider = ']' },
 }
 
 local Diagnostics = {
@@ -254,7 +255,7 @@ local Diagnostics = {
     update = { 'DiagnosticChanged' },
 
     {
-        provider = '[ ',
+        provider = '[',
     },
     {
         provider = function(self)
@@ -309,7 +310,7 @@ local Diagnostics = {
         hl = { fg = 'diag_hint' },
     },
     {
-        provider = ' ]',
+        provider = ']',
     },
 }
 
