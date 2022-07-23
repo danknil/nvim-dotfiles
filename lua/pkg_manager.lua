@@ -33,7 +33,6 @@ local pkgs = {
     'hrsh7th/nvim-cmp',
     'L3MON4D3/LuaSnip',
     'saadparwaiz1/cmp_luasnip',
-    'hrsh7th/cmp-nvim-lua',
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
@@ -54,13 +53,14 @@ local pkgs = {
     'folke/todo-comments.nvim',
     'xiyaowong/nvim-cursorword',
     'SmiteshP/nvim-navic',
-    'anuvyklack/pretty-fold.nvim',
 
     -- Misc
     'frabjous/knap',
     'rmagatti/auto-session',
     'jghauser/mkdir.nvim',
+    'andweeb/presence.nvim',
 }
+
 local function clone_paq()
     print 'cloning paq...'
     vim.fn.system {
@@ -81,6 +81,7 @@ function bootstrap()
     paq.install()
 end
 
+---@diagnostic disable-next-line: missing-parameter
 if vim.fn.empty(vim.fn.glob(path)) > 0 then
     clone_paq()
     bootstrap()

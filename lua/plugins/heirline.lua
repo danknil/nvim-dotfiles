@@ -258,8 +258,12 @@ local Diagnostics = {
     },
     {
         provider = function(self)
-            local error_icon = vim.fn.sign_getdefined('DiagnosticSignError')[1].text
-            local errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
+            local error_icon = vim.fn.sign_getdefined('DiagnosticSignError')[1]
+            if not error_icon then
+                return ''
+            end
+            error_icon = error_icon.text
+            local errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR }) or 0
             -- 0 is just another output, we can decide to print it or not!
             return errors > 0 and (error_icon .. errors .. ' ')
         end,
@@ -267,25 +271,39 @@ local Diagnostics = {
     },
     {
         provider = function(self)
-            local warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
+            local warn_icon = vim.fn.sign_getdefined('DiagnosticSignWarn')[1]
+            if not warn_icon then
+                return ''
+            end
+            warn_icon = warn_icon.text
+            local warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN }) or 0
 
-            local warn_icon = vim.fn.sign_getdefined('DiagnosticSignWarn')[1].text
             return warnings > 0 and (warn_icon .. warnings .. ' ')
         end,
         hl = { fg = 'diag_warn' },
     },
     {
         provider = function(self)
-            local info_icon = vim.fn.sign_getdefined('DiagnosticSignInfo')[1].text
-            local info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
+            local info_icon = vim.fn.sign_getdefined('DiagnosticSignInfo')[1]
+            if not info_icon then
+                return ''
+            end
+            info_icon = info_icon.text
+            local info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO }) or 0
+
             return info > 0 and (info_icon .. info .. ' ')
         end,
         hl = { fg = 'diag_info' },
     },
     {
         provider = function(self)
-            local hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
-            local hint_icon = vim.fn.sign_getdefined('DiagnosticSignHint')[1].text
+            local hint_icon = vim.fn.sign_getdefined('DiagnosticSignHint')[1]
+            if not hint_icon then
+                return ''
+            end
+            hint_icon = hint_icon.text
+            local hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT }) or 0
+
             return hints > 0 and (hint_icon .. hints)
         end,
         hl = { fg = 'diag_hint' },

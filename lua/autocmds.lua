@@ -1,6 +1,7 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
+
 local function autocmd_on_type(tb)
     if type(tb.filetype) == 'string' then
         tb.filetype = { tb.filetype }
