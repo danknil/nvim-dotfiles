@@ -7,6 +7,7 @@ local g = vim.g
 require('auto-session').setup {
     auto_session_suppress_dirs = { '~/' },
 }
+require('stabilize').setup()
 
 -- UI
 require('gitsigns').setup {}
@@ -39,7 +40,6 @@ autocmd({ 'InsertLeave', 'WinEnter' }, {
 })
 
 -- Moves
-require('nvim-surround').setup {}
 require('Comment').setup {}
 require('leap').set_default_keymaps()
 require('better_escape').setup {

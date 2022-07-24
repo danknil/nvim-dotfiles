@@ -6,6 +6,7 @@ local pkgs = {
     'nvim-lua/plenary.nvim',
     'kyazdani42/nvim-web-devicons',
     'nvim-treesitter/nvim-treesitter',
+    'nvim-treesitter/playground',
     'rebelot/kanagawa.nvim',
 
     -- Moves
@@ -55,6 +56,7 @@ local pkgs = {
     'frabjous/knap',
     'rmagatti/auto-session',
     'jghauser/mkdir.nvim',
+    'luukvbaal/stabilize.nvim',
     'andweeb/presence.nvim',
 }
 

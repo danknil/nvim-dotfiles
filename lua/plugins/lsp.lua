@@ -42,7 +42,6 @@ local on_attach = function(client, bufnr)
 end
 
 local luadev = require('lua-dev').setup {
-    runtime_path = false,
     lsp_config = {
         capabilities = capabilities,
         on_attach = on_attach,
@@ -90,4 +89,3 @@ nls.register(latex_sources)
 nls.register(lua_sources)
 nls.register(nls.builtins.code_actions.gitsigns)
 nls.register(nls.builtins.code_actions.proselint)
-nls.register(nls.builtins.diagnostics.markdownlint)
