@@ -51,29 +51,6 @@ M.telescope = {
     },
 }
 
-M.tree_climber = {
-    n = {
-        ['H'] = '<cmd>lua require"tree-climber".goto_parent {}<cr>',
-        ['L'] = '<cmd>lua require"tree-climber".goto_child {}<cr>',
-        ['gJ'] = '<cmd>lua require"tree-climber".goto_next {}<cr>',
-        ['gK'] = '<cmd>lua require"tree-climber".goto_prev {}<cr>',
-        ['<C-j>'] = '<cmd>lua require"tree-climber".swap_prev {}<cr>',
-        ['<C-k>'] = '<cmd>lua require"tree-climber".swap_next {}<cr>',
-    },
-    v = {
-        ['H'] = '<cmd>lua require"tree-climber".goto_parent {}<cr>',
-        ['L'] = '<cmd>lua require"tree-climber".goto_child {}<cr>',
-        ['gJ'] = '<cmd>lua require"tree-climber".goto_next {}<cr>',
-        ['gK'] = '<cmd>lua require"tree-climber".goto_prev {}<cr>',
-    },
-    o = {
-        ['H'] = '<cmd>lua require"tree-climber".goto_parent {}<cr>',
-        ['L'] = '<cmd>lua require"tree-climber".goto_child {}<cr>',
-        ['gJ'] = '<cmd>lua require"tree-climber".goto_next {}<cr>',
-        ['gK'] = '<cmd>lua require"tree-climber".goto_prev {}<cr>',
-    },
-}
-
 hydra {
     name = 'Window manager',
     hint = 'statusline',

@@ -16,7 +16,7 @@ local pkgs = {
     'ggandor/leap.nvim',
     'numToStr/Comment.nvim',
     'anuvyklack/hydra.nvim',
-    'drybalka/tree-climber.nvim',
+    'RRethy/nvim-treesitter-textsubjects',
     -- LSP
     'williamboman/nvim-lsp-installer',
     'neovim/nvim-lspconfig',
