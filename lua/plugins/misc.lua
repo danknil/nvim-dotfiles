@@ -10,9 +10,6 @@ require('auto-session').setup {
 
 -- UI
 require('gitsigns').setup {}
-require('jabs').setup {}
--- TODO: fix mappings
--- maps.load_mappings("jabs", { silent = true })
 require('todo-comments').setup {}
 
 require('indent_blankline').setup {
