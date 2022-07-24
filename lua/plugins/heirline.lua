@@ -22,7 +22,7 @@ local colors = {
 require('heirline').load_colors(colors)
 
 local Align = { provider = '%=' }
-local Space = { provider = ' ' }
+local Space = { provider = '  ' }
 
 local ViMode = {
     -- get vim current mode, this information will be required by the provider
@@ -185,14 +185,14 @@ local Ruler = {
     -- %L = number of lines in the buffer
     -- %c = column number
     -- %P = percentage through file of displayed window
-    provider = '%9(%l : %2c%)',
+    provider = function (self)
+        local row,col = unpack(vim.api.nvim_win_get_cursor(0))
+        return string.format(' %d:%d ', row, col)
+    end,
+
     hl = function()
         return { fg = 'cyan', bold = true, force = true }
     end,
-}
-local Navic = {
-    condition = require('nvim-navic').is_available,
-    provider = require('nvim-navic').get_location,
 }
 local Git = {
     condition = conditions.is_git_repo,
@@ -313,7 +313,11 @@ local Diagnostics = {
         provider = ']',
     },
 }
-
-local statusline = { ViMode, Navic, Align, Git, Space, Ruler }
-local winbar = { Space, Diagnostics, Align, FileNameBlock }
+local Treesitter = {
+    provider = function ()
+        return ''
+    end
+}
+local statusline = { ViMode, Space, Treesitter, Align, Git, --[[ Space, Ruler ]]}
+local winbar = { Diagnostics, Align, FileNameBlock }
 require('heirline').setup(statusline, winbar)

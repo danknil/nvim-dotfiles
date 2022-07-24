@@ -49,7 +49,6 @@ local pkgs = {
     'lukas-reineke/indent-blankline.nvim',
     'lewis6991/gitsigns.nvim',
     'folke/todo-comments.nvim',
-    'SmiteshP/nvim-navic',
 
     -- Misc
     'frabjous/knap',

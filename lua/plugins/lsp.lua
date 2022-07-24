@@ -34,9 +34,6 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 local on_attach = function(client, bufnr)
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    if client.name ~= 'null-ls' then
-        require('nvim-navic').attach(client, bufnr)
-    end
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     maps:load_mappings('lsp', bufopts)
 end
