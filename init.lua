@@ -6,4 +6,4 @@ require 'autocmds'
 require 'options'
 require 'plugins'
 
-maps:load_mappings('general', { silent = true, noremap = true })
+maps:load_mappings('general', { silent = true })

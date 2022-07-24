@@ -77,11 +77,17 @@ local go_sources = {
     nls.builtins.formatting.gofmt,
     nls.builtins.diagnostics.staticcheck,
 }
+local latex_sources = {
+    nls.builtins.formatting.latexindent,
+}
+local lua_sources = {
+    nls.builtins.formatting.stylua,
+}
 
 nls.register(c_sources)
 nls.register(go_sources)
+nls.register(latex_sources)
+nls.register(lua_sources)
 nls.register(nls.builtins.code_actions.gitsigns)
 nls.register(nls.builtins.code_actions.proselint)
-nls.register(nls.builtins.formatting.stylua)
 nls.register(nls.builtins.diagnostics.markdownlint)
-nls.register(nls.builtins.formatting.latexindent)

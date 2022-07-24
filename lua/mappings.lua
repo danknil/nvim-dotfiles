@@ -20,6 +20,8 @@ M.general = {
         ['<space>'] = '<cmd>noh<cr>',
         ['<leader>e'] = '<cmd>Vex<cr>',
         ['<C-c>'] = '<cmd>%y+<cr>',
+        ['<Tab>'] = '<cmd>bn<cr>',
+        ['<S-Tab>'] = '<cmd>bp<cr>',
     },
 }
 
@@ -42,16 +44,33 @@ M.lsp = {
 
 M.telescope = {
     n = {
-        ['<leader>f'] = "<cmd>lua require'telescope.builtin'.find_files()<cr>",
-        ['<leader>td'] = "<cmd>lua require'telescope.builtin'.diagnostics()<cr>",
-        ['<leader>tt'] = "<cmd>lua require'telescope.builtin'.treesitter()<cr>",
-        ['<leader>tp'] = "<cmd>lua require'telescope'.extensions.project.project()<cr>",
+        ['<leader>f'] = '<cmd>lua require"telescope.builtin".find_files()<cr>',
+        ['<leader>td'] = '<cmd>lua require"telescope.builtin".diagnostics()<cr>',
+        ['<leader>tt'] = '<cmd>lua require"telescope.builtin".treesitter()<cr>',
+        ['<leader>tp'] = '<cmd>lua require"telescope".extensions.project.project()<cr>',
     },
 }
 
-M.jabs = {
+M.tree_climber = {
     n = {
-        ['<leader>b'] = '<cmd>JABSOpen<cr>',
+        ['H'] = '<cmd>lua require"tree-climber".goto_parent {}<cr>',
+        ['L'] = '<cmd>lua require"tree-climber".goto_child {}<cr>',
+        ['gJ'] = '<cmd>lua require"tree-climber".goto_next {}<cr>',
+        ['gK'] = '<cmd>lua require"tree-climber".goto_prev {}<cr>',
+        ['<C-j>'] = '<cmd>lua require"tree-climber".swap_prev {}<cr>',
+        ['<C-k>'] = '<cmd>lua require"tree-climber".swap_next {}<cr>',
+    },
+    v = {
+        ['H'] = '<cmd>lua require"tree-climber".goto_parent {}<cr>',
+        ['L'] = '<cmd>lua require"tree-climber".goto_child {}<cr>',
+        ['gJ'] = '<cmd>lua require"tree-climber".goto_next {}<cr>',
+        ['gK'] = '<cmd>lua require"tree-climber".goto_prev {}<cr>',
+    },
+    o = {
+        ['H'] = '<cmd>lua require"tree-climber".goto_parent {}<cr>',
+        ['L'] = '<cmd>lua require"tree-climber".goto_child {}<cr>',
+        ['gJ'] = '<cmd>lua require"tree-climber".goto_next {}<cr>',
+        ['gK'] = '<cmd>lua require"tree-climber".goto_prev {}<cr>',
     },
 }
 

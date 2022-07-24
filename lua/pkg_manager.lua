@@ -15,9 +15,7 @@ local pkgs = {
     'ggandor/leap.nvim',
     'numToStr/Comment.nvim',
     'anuvyklack/hydra.nvim',
-    'ziontee113/syntax-tree-surfer',
-    'RRethy/nvim-treesitter-textsubjects',
-
+    'drybalka/tree-climber.nvim',
     -- LSP
     'williamboman/nvim-lsp-installer',
     'neovim/nvim-lspconfig',
@@ -45,7 +43,6 @@ local pkgs = {
     { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
 
     -- UI
-    'matbme/JABS.nvim',
     'rebelot/heirline.nvim',
     'stevearc/dressing.nvim',
     'lukas-reineke/indent-blankline.nvim',
