@@ -1,5 +1,6 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
+local disable_ft = { 'TelescopePrompt', 'netrw' }
 
 local function autocmd_on_type(tb)
     if type(tb.filetype) == 'string' then
@@ -19,7 +20,7 @@ augroup('numbs', { clear = true })
 autocmd('InsertEnter', {
     group = 'numbs',
     callback = function()
-        if vim.bo.filetype ~= nil then
+        if not vim.tbl_contains(disable_ft, vim.bo.filetype) then
             vim.opt.number = false
             vim.opt.relativenumber = false
         end
@@ -28,7 +29,7 @@ autocmd('InsertEnter', {
 autocmd('InsertLeave', {
     group = 'numbs',
     callback = function()
-        if vim.bo.filetype ~= nil then
+        if not vim.tbl_contains(disable_ft, vim.bo.filetype) then
             vim.opt.number = true
             vim.opt.relativenumber = true
         end

@@ -20,25 +20,6 @@ require('indent_blankline').setup {
     char_list = { '│', '¦', '┆', '┊' },
 }
 
-g.cursorword_disable_at_startup = true
-g.cursorword_min_width = 3
-g.cursorword_max_width = 50
-augroup('NvimCursorword', { clear = true })
-autocmd({ 'InsertEnter' }, {
-    group = 'NvimCursorword',
-    callback = function()
-        vim.cmd [[ CursorWordDisable ]]
-    end,
-})
-autocmd({ 'InsertLeave', 'WinEnter' }, {
-    group = 'NvimCursorword',
-    callback = function()
-        if vim.bo.filetype ~= nil then
-            vim.cmd [[ CursorWordEnable ]]
-        end
-    end,
-})
-
 -- Moves
 require('Comment').setup {}
 require('leap').set_default_keymaps()

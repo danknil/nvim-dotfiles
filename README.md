@@ -25,10 +25,10 @@
   - [ ] Make a config for dap
   - [ ] Make statusline looks better
   - [x] Add keybinds for other plugins
-  - [ ] Fix cursorword
-  - [ ] Fix autocommands
+  - [x] Fix cursorword (i just delete it :skull:)
+  - [x] Fix autocommands
 
 ## Maybe
-  - [ ] Feature showcase?
+  - [x] Feature showcase?
   - [ ] Lazy loading?
   - [ ] Windows support?
