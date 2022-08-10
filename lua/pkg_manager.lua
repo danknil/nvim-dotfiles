@@ -7,6 +7,7 @@ local pkgs = {
     'kyazdani42/nvim-web-devicons',
     'nvim-treesitter/nvim-treesitter',
     'nvim-treesitter/playground',
+    'nathom/filetype.nvim',
     'rebelot/kanagawa.nvim',
 
     -- Moves
@@ -17,6 +18,7 @@ local pkgs = {
     'numToStr/Comment.nvim',
     'anuvyklack/hydra.nvim',
     'RRethy/nvim-treesitter-textsubjects',
+
     -- LSP
     'williamboman/nvim-lsp-installer',
     'neovim/nvim-lspconfig',
@@ -81,7 +83,6 @@ end
 ---@diagnostic disable-next-line: missing-parameter
 if vim.fn.empty(vim.fn.glob(path)) > 0 then
     clone_paq()
-    bootstrap()
 end
 vim.api.nvim_create_user_command('PaqSetup', bootstrap, { nargs = 0 })
 return { bootstrap = bootstrap }

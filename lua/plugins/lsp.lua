@@ -50,7 +50,7 @@ lspconfig.gopls.setup {
     capabilities = capabilities,
     on_attach = on_attach,
 }
-lspconfig.clangd.setup {
+lspconfig.ccls.setup {
     capabilities = capabilities,
     on_attach = on_attach,
 }

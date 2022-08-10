@@ -48,6 +48,7 @@ M.telescope = {
         ['<leader>td'] = '<cmd>lua require"telescope.builtin".diagnostics()<cr>',
         ['<leader>tt'] = '<cmd>lua require"telescope.builtin".treesitter()<cr>',
         ['<leader>tp'] = '<cmd>lua require"telescope".extensions.project.project()<cr>',
+        ['<leader>tb'] = '<cmd>lua require"telescope.builtin".buffers()<cr>',
     },
 }
 
