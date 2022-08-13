@@ -328,6 +328,6 @@ local statusline = {
     Ruler,
 }
 local winbar = { Diagnostics, Align, FileNameBlock }
-require('heirline').setup(statusline) --, winbar)
-require('heirline').winbar = require('heirline.statusline'):new(winbar)
-vim.opt.winbar = "%{%v:lua.require'heirline'.eval_winbar()%}"
+require('heirline').setup(statusline, winbar)
+-- require('heirline').winbar = require('heirline.statusline'):new(winbar)
+-- vim.opt.winbar = "%{%v:lua.require'heirline'.eval_winbar()%}"

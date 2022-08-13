@@ -27,7 +27,7 @@
   - [x] Add keybinds for other plugins
   - [x] Fix cursorword (i just delete it :skull:)
   - [x] Fix autocommands
-  - [ ] fix [E315 lnum error](https://github.com/neovim/neovim/issues/19458) with ruler
+  - [x] fix [E315 lnum error](https://github.com/neovim/neovim/issues/19458) with ruler
 
 ## Maybe
   - [x] Feature showcase?
