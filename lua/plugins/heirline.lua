@@ -323,7 +323,9 @@ local statusline = {
     Space,
     Treesitter,
     Align,
-    Git, --[[ Space, Ruler ]]
+    Git,
+    Space,
+    Ruler,
 }
 local winbar = { Diagnostics, Align, FileNameBlock }
 require('heirline').setup(statusline) --, winbar)

@@ -23,7 +23,7 @@
   - [ ] Improve support for go, c, rust, latex(snippets and lsp)
   - [x] Add some null-ls stuff
   - [ ] Make a config for dap
-  - [ ] Make statusline looks better
+  - [x] Make statusline looks better
   - [x] Add keybinds for other plugins
   - [x] Fix cursorword (i just delete it :skull:)
   - [x] Fix autocommands
