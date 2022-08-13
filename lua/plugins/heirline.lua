@@ -185,8 +185,8 @@ local Ruler = {
     -- %L = number of lines in the buffer
     -- %c = column number
     -- %P = percentage through file of displayed window
-    provider = function (self)
-        local row,col = unpack(vim.api.nvim_win_get_cursor(0))
+    provider = function(self)
+        local row, col = unpack(vim.api.nvim_win_get_cursor(0))
         return string.format(' %d:%d ', row, col)
     end,
 
@@ -314,12 +314,18 @@ local Diagnostics = {
     },
 }
 local Treesitter = {
-    provider = function ()
+    provider = function()
         return ''
-    end
+    end,
 }
-local statusline = { ViMode, Space, Treesitter, Align, Git, --[[ Space, Ruler ]]}
+local statusline = {
+    ViMode,
+    Space,
+    Treesitter,
+    Align,
+    Git, --[[ Space, Ruler ]]
+}
 local winbar = { Diagnostics, Align, FileNameBlock }
-require("heirline").setup(statusline)--, winbar)
-require("heirline").winbar = require("heirline.statusline"):new(winbar)
+require('heirline').setup(statusline) --, winbar)
+require('heirline').winbar = require('heirline.statusline'):new(winbar)
 vim.opt.winbar = "%{%v:lua.require'heirline'.eval_winbar()%}"
