@@ -64,7 +64,7 @@ require('null-ls').setup {
 }
 local c_sources = {
     nls.builtins.diagnostics.cppcheck,
-    nls.builtins.formatting.clang_format,
+    nls.builtins.formatting.astyle,
 }
 
 local go_sources = {
