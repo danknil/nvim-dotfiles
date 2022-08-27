@@ -69,7 +69,7 @@ cmp.setup {
     sources = {
         { name = 'path', priority = 5, max_item_count = 2 },
         { name = 'luasnip', priority = 4, max_item_count = 4 },
-        { name = 'nvim_lsp', priority = 3, max_item_count = 8 },
-        { name = 'buffer', priority = 2, keyword_length = 2, max_item_count = 4 },
+        { name = 'nvim_lsp', priority = 3, max_item_count = 16 },
+        { name = 'buffer', priority = 2, keyword_length = 2, max_item_count = 8 },
     },
 }

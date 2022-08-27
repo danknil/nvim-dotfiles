@@ -15,3 +15,8 @@ local fmt = require('luasnip.extras.fmt').fmt
 local m = require('luasnip.extras').m
 local lambda = require('luasnip.extras').l
 local postfix = require('luasnip.extras.postfix').postfix
+
+ls.config.setup {
+    region_check_events = 'CursorHold,InsertLeave,InsertEnter',
+    delete_check_events = 'TextChanged,InsertEnter',
+}

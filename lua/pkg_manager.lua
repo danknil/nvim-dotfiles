@@ -20,44 +20,45 @@ local pkgs = {
     'RRethy/nvim-treesitter-textsubjects',
 
     -- LSP
-    'williamboman/nvim-lsp-installer',
     'neovim/nvim-lspconfig',
-    'jose-elias-alvarez/null-ls.nvim',
-    'onsails/lspkind.nvim',
+    'mfussenegger/nvim-lint',
+    'mhartington/formatter.nvim',
 
     -- DAP
     'mfussenegger/nvim-dap',
-    'ravenxrz/DAPInstall.nvim',
     'rcarriga/nvim-dap-ui',
 
     -- cmp
     'hrsh7th/nvim-cmp',
+    'onsails/lspkind.nvim',
     'L3MON4D3/LuaSnip',
     'saadparwaiz1/cmp_luasnip',
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
-    'folke/lua-dev.nvim',
+    { 'folke/lua-dev.nvim', opt = true },
 
     -- Telescope
     'nvim-telescope/telescope.nvim',
     'nvim-telescope/telescope-project.nvim',
-    'benfowler/telescope-luasnip.nvim',
     { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
 
+    -- Mason nvim
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
+
     -- UI
-    'rebelot/heirline.nvim',
-    'stevearc/dressing.nvim',
+    'nvim-lualine/lualine.nvim',
     'lukas-reineke/indent-blankline.nvim',
     'lewis6991/gitsigns.nvim',
     'folke/todo-comments.nvim',
+    'stevearc/dressing.nvim',
+    'anuvyklack/pretty-fold.nvim',
 
     -- Misc
-    'frabjous/knap',
-    'rmagatti/auto-session',
     'jghauser/mkdir.nvim',
     'luukvbaal/stabilize.nvim',
-    'andweeb/presence.nvim',
 }
 
 local function clone_paq()
@@ -73,7 +74,7 @@ end
 
 function bootstrap()
     -- Load Paq
-    vim.cmd 'packadd paq-nvim'
+    vim.cmd [[ packadd paq-nvim ]]
     local paq = require 'paq'
     -- Read and install packages
     paq(pkgs)

@@ -1,8 +1,6 @@
 local default_colors = require('kanagawa.colors').setup()
 
 local overrides = {
-    StatusLine = { link = 'Normal' },
-
     TelescopeTitle = { bg = default_colors.waveBlue2, fg = default_colors.fujiWhite },
     TelescopePreviewTitle = { bg = default_colors.waveBlue1, fg = default_colors.fujiWhite },
     TelescopeNormal = { bg = default_colors.waveBlue2, fg = default_colors.fujiWhite },
@@ -16,8 +14,6 @@ local overrides = {
     TelescopeResultsTitle = { bg = default_colors.sumiInk0, fg = default_colors.fujiWhite },
     TelescopeResultsNormal = { bg = default_colors.sumiInk0, fg = default_colors.fujiWhite },
     TelescopeResultsBorder = { bg = default_colors.sumiInk0, fg = default_colors.sumiInk0 },
-
-    CursorWord = { bold = true, blend = 10 },
 
     PmenuSel = { bg = default_colors.sumiInk1, fg = 'NONE' },
     Pmenu = { fg = default_colors.fujiWhite, bg = default_colors.sumiInk0 },
@@ -61,4 +57,6 @@ local overrides = {
 }
 require('kanagawa').setup { overrides = overrides }
 
-vim.cmd [[ colorscheme kanagawa ]]
+vim.cmd [[
+colorscheme kanagawa
+]]

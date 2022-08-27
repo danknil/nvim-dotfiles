@@ -19,6 +19,7 @@ opt.fillchars = { eob = ' ' }
 opt.ignorecase = true
 opt.smartcase = true
 opt.mouse = 'nv'
+opt.mousemodel = 'extend'
 
 -- Numbers
 opt.number = true
@@ -28,6 +29,11 @@ opt.ruler = false
 
 -- disable nvim intro
 opt.shortmess:append 'FcsI'
+
+-- fold settings
+opt.foldexpr = 'nvim_treesitter#foldexpr()'
+opt.foldmethod = 'expr'
+opt.foldlevelstart = 99
 
 opt.signcolumn = 'yes'
 opt.splitbelow = true

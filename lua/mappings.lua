@@ -1,4 +1,5 @@
 local hydra = require 'hydra'
+local cmd = vim.cmd
 local M = {}
 
 function M:load_mappings(mappings, opts)
@@ -36,9 +37,7 @@ M.lsp = {
         ['<leader>rn'] = vim.lsp.buf.rename,
         ['<leader>ca'] = vim.lsp.buf.code_action,
         ['gr'] = vim.lsp.buf.references,
-        ['<leader>bf'] = function()
-            vim.lsp.buf.format { async = true }
-        end,
+        ['<leader>bf'] = '<cmd>Format<cr>',
     },
 }
 

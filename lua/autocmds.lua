@@ -1,20 +1,15 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
+local util = require 'utils'
 local disable_ft = { 'TelescopePrompt', 'netrw' }
 
-local function autocmd_on_type(tb)
-    if type(tb.filetype) == 'string' then
-        tb.filetype = { tb.filetype }
-    end
-    autocmd('BufEnter', {
-        group = tb.group,
-        callback = function()
-            if vim.tbl_contains(tb.filetype, vim.bo.filetype) then
-                tb.callback()
-            end
-        end,
-    })
-end
+augroup('lint', { clear = true })
+autocmd('BufWritePost', {
+    group = 'lint',
+    callback = function()
+        require('lint').try_lint()
+    end,
+})
 
 augroup('numbs', { clear = true })
 autocmd('InsertEnter', {
@@ -36,15 +31,8 @@ autocmd('InsertLeave', {
     end,
 })
 
--- augroup("autowrite", { clear = true })
--- autocmd("InsertLeave", {
---   group = "autowrite",
---   pattern = "*.*",
---   command = "w",
--- })
-
 augroup('tabs', { clear = true })
-autocmd_on_type {
+util.autocmd_on_type {
     filetype = 'lua',
     group = 'tabs',
     callback = function()
@@ -53,7 +41,7 @@ autocmd_on_type {
         vim.opt.smartindent = true
     end,
 }
-autocmd_on_type {
+util.autocmd_on_type {
     filetype = { 'c', 'go' },
     group = 'tabs',
     callback = function()

@@ -4,9 +4,6 @@ local augroup = vim.api.nvim_create_augroup
 local g = vim.g
 
 -- Misc
-require('auto-session').setup {
-    auto_session_suppress_dirs = { '~/' },
-}
 require('stabilize').setup()
 
 -- UI
