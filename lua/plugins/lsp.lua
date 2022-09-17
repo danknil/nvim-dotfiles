@@ -55,6 +55,10 @@ lspconfig.texlab.setup {
     capabilities = capabilities,
     on_attach = on_attach,
 }
+lspconfig.jsonls.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
 
 -- local c_sources = {
 --     nls.builtins.formatting.astyle,

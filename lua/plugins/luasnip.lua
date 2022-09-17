@@ -1,22 +1,17 @@
----@diagnostic disable: unused-local
 local ls = require 'luasnip'
-local s = ls.snippet
-local sn = ls.snippet_node
-local isn = ls.indent_snippet_node
-local t = ls.text_node
-local i = ls.insert_node
-local f = ls.function_node
-local c = ls.choice_node
-local d = ls.dynamic_node
-local r = ls.restore_node
-local events = require 'luasnip.util.events'
-local ai = require 'luasnip.nodes.absolute_indexer'
-local fmt = require('luasnip.extras.fmt').fmt
-local m = require('luasnip.extras').m
-local lambda = require('luasnip.extras').l
-local postfix = require('luasnip.extras.postfix').postfix
+local maps = require 'mappings'
 
 ls.config.setup {
-    region_check_events = 'CursorHold,InsertLeave,InsertEnter',
-    delete_check_events = 'TextChanged,InsertEnter',
+    region_check_events = 'CursorHold,CursorMoved,InsertEnter',
+    delete_check_events = 'TextChanged,InsertLeave',
+    enable_autosnippets = true,
 }
+
+_G.luasnip = {}
+-- _G.luasnip.vars = {
+--     username = 'kunzaatko',
+--     email = 'martinkunz@email.cz',
+--     github = 'https://github.com/kunzaatko',
+--     real_name = 'Martin Kunz',
+-- }
+maps:load_mappings('luasnip', { noremap = true })

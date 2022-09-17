@@ -2,6 +2,7 @@ local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 local util = require 'utils'
 local disable_ft = { 'TelescopePrompt', 'netrw' }
+local job = require 'plenary.job'
 
 augroup('lint', { clear = true })
 autocmd('BufWritePost', {
@@ -31,22 +32,24 @@ autocmd('InsertLeave', {
     end,
 })
 
-augroup('tabs', { clear = true })
-util.autocmd_on_type {
-    filetype = 'lua',
-    group = 'tabs',
-    callback = function()
-        vim.opt.expandtab = true
-        vim.opt.shiftwidth = 4
-        vim.opt.smartindent = true
-    end,
-}
-util.autocmd_on_type {
-    filetype = { 'c', 'go' },
-    group = 'tabs',
-    callback = function()
-        vim.opt.expandtab = true
-        vim.opt.shiftwidth = 8
-        vim.opt.smartindent = true
-    end,
-}
+-- augroup('autogen', { clear = true })
+-- util.autocmd_on_type {
+--     filetype = 'tex',
+--     group = 'autogen',
+--     callback = function()
+--         _G.latexmkjob = job:new {
+--             command = 'latexmk',
+--             args = { '-pvc', '-pdflua', '-view=none' },
+--             cwd = vim.loop.cwd(),
+--         }
+--         _G.latexmkjob:start()
+--     end,
+-- }
+-- autocmd('VimLeavePre', {
+--     group = 'autogen',
+--     callback = function()
+--         if _G.latexmkjob then
+--             _G.latexmkjob:shutdown()
+--         end
+--     end,
+-- })

@@ -9,6 +9,7 @@ local pkgs = {
     'nvim-treesitter/playground',
     'nathom/filetype.nvim',
     'rebelot/kanagawa.nvim',
+    'lewis6991/impatient.nvim',
 
     -- Moves
     'tpope/vim-repeat',

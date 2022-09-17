@@ -1,4 +1,4 @@
----@diagnostic disable: missing-parameter
+---@diagnostic disable: missing-parameter 
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 
@@ -41,7 +41,7 @@ cmp.setup {
             if cmp.visible() then
                 local entry = cmp.get_selected_entry()
                 if not entry then
-                    if not luasnip.expand_or_jumpable() then
+                    if not luasnip.expand_or_locally_jumpable() then
                         cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
                         cmp.confirm { behavior = cmp.ConfirmBehavior.Replace }
                     else

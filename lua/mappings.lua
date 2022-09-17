@@ -51,6 +51,17 @@ M.telescope = {
     },
 }
 
+M.luasnip = {
+    i = {
+        ['<C-n>'] = '<Plug>luasnip-next-choice',
+        ['<C-p>'] = '<Plug>luasnip-prev-choice',
+    },
+    s = {
+        ['<C-n>'] = '<Plug>luasnip-next-choice',
+        ['<C-p>'] = '<Plug>luasnip-prev-choice',
+    }
+}
+
 hydra {
     name = 'Window manager',
     hint = 'statusline',
