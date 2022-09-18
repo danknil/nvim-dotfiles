@@ -41,22 +41,67 @@ o.smartindent = true
 ls.add_snippets('tex', {
     s('math', {
         c(1, {
-            sn(nil, fmt('${}$', { i(1) })),
-            sn(nil, fmta('\\begin{math}\n<>\n\\end{math}', { i(1) })),
+            sn(nil, fmt('${}${}', { i(1), i(2) })),
+            sn(
+                nil,
+                fmta(
+                    [[
+\begin{math}
+  <>
+\end{math}
+<>
+]],
+                    { i(1), i(2) }
+                )
+            ),
         }),
-        i(0),
     }),
-    s('block', {
+    s(
+        'block',
+        fmta('\\begin{<>}\n<>\n\\end{<>}<>', {
+            i(1),
+            i(2),
+            f(function(args, _, _)
+                return args[1][1]
+            end, { 1 }, {}),
+            i(0),
+        })
+    ),
+    s(
+        'note',
         fmta(
-            '\\begin{<>}\n<>\n\\end{<>}<>',
-            {
-                i(1),
-                i(2),
-                f(function(args, _, _)
-                    return args[1][1]
-                end, { 1 }, {}),
-                i(0),
-            }
-        ),
-    }),
+            [[
+\documentclass[17pt]{extarticle}
+
+\usepackage{extsizes}
+\usepackage{cmap}
+\usepackage[T1]{fontenc}
+\usepackage[english,russian]{babel}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\rfoot{Страница \thepage \hspace{1pt} из \pageref{LastPage}}
+
+\author{<>}
+\title{<>}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+<>
+
+\end{document}
+    ]],
+            { i(1), i(2), i(3), i(0) }
+        )
+    ),
 })

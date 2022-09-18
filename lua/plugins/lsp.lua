@@ -1,14 +1,22 @@
 local lspconfig = require 'lspconfig'
-local formatter_util = require 'formatter.util'
+local masonlsp = require 'mason-lspconfig'
+-- local formatter_util = require 'formatter.util'
 local maps = require 'mappings'
+
+require('nlspsettings').setup {
+    config_home = vim.fn.stdpath 'config' .. '/nlsp-settings',
+    local_settings_dir = '.nlsp-settings',
+    local_settings_root_markers_fallback = { '.git' },
+    append_default_schemas = true,
+    loader = 'json',
+}
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.foldingRange = {
     dynamicRegistration = false,
     lineFoldingOnly = true,
 }
-capabilities.textDocument.completion.completionItem.snippetSupport = false
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 ---@diagnostic disable-next-line: unused-local
 local on_attach = function(client, bufnr)
@@ -41,40 +49,16 @@ vim.api.nvim_create_autocmd('DirChanged', {
     pattern = 'global',
     callback = setup_lua_lsp,
 })
-setup_lua_lsp()
 
-lspconfig.gopls.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
+masonlsp.setup_handlers {
+    function(server_name)
+        lspconfig[server_name].setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+        }
+    end,
+    ['sumneko_lua'] = setup_lua_lsp,
 }
-lspconfig.ccls.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
-lspconfig.texlab.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
-lspconfig.jsonls.setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
-
--- local c_sources = {
---     nls.builtins.formatting.astyle,
--- }
---
--- local go_sources = {
---     nls.builtins.formatting.golines,
---     nls.builtins.formatting.goimports,
---     nls.builtins.formatting.gofmt,
--- }
--- local latex_sources = {
---     nls.builtins.formatting.latexindent,
--- }
--- local lua_sources = {
---     nls.builtins.formatting.stylua,
--- }
 
 require('formatter').setup {
     logging = true,

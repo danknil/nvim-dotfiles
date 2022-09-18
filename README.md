@@ -8,14 +8,13 @@
 ## Features
 - plugin manager [paq-nvim](https://github.com/savq/paq-nvim)
 - best theme [kanagawa](https://github.com/rebelot/kanagawa.nvim)
-- discord rpc via [presence](https://github.com/andweeb/presence.nvim)
-- completition via [nvim-cmp](https://github.com/hrsh7th/nvim-cmp/)
+- completition via [coq\_nvim](https://github.com/ms-jpq/coq_nvim)
 - best snippet engine for neovim [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
 - surround text with [nvim-surround](https://github.com/kylechui/nvim-surround)
 - comment everything with [Comment](https://github.com/numToStr/Comment.nvim)
 - jumping like a kangaroo with [leap](https://github.com/ggandor/leap.nvim)
 - [better escape](https://github.com/max397574/better-escape.nvim) from insert
-- statusline and winbar via [heirline](https://github.com/rebelot/heirline.nvim)
+- statusline and winbar via [lualine](https://github.com/nvim-lualine/lualine.nvim)
 - dress your select windows via [dressing.nvim](https://github.com/stevearc/dressing.nvim)
 
 ## Todo

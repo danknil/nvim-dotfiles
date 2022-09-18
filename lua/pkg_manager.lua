@@ -24,20 +24,27 @@ local pkgs = {
     'neovim/nvim-lspconfig',
     'mfussenegger/nvim-lint',
     'mhartington/formatter.nvim',
+    { 'folke/lua-dev.nvim', opt = true },
 
     -- DAP
     'mfussenegger/nvim-dap',
     'rcarriga/nvim-dap-ui',
 
-    -- cmp
-    'hrsh7th/nvim-cmp',
-    'onsails/lspkind.nvim',
+    -- snippets
     'L3MON4D3/LuaSnip',
-    'saadparwaiz1/cmp_luasnip',
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-path',
-    { 'folke/lua-dev.nvim', opt = true },
+
+    -- coq
+    { 'ms-jpq/coq_nvim', branch = 'coq' },
+    { 'ms-jpq/coq.thirdparty', branch = '3p' },
+    'mendes-davi/coq_luasnip',
+    'tamago324/nlsp-settings.nvim',
+
+    -- -- cmp
+    -- 'hrsh7th/nvim-cmp',
+    -- 'saadparwaiz1/cmp_luasnip',
+    -- 'hrsh7th/cmp-nvim-lsp',
+    -- 'hrsh7th/cmp-buffer',
+    -- 'hrsh7th/cmp-path',
 
     -- Telescope
     'nvim-telescope/telescope.nvim',

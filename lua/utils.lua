@@ -45,4 +45,12 @@ function M.autocmd_on_type(tb)
     })
 end
 
+function M.pumvisible()
+    return vim.fn.pumvisible() ~= 0
+end
+
+function M.get_complete_selected()
+    return vim.fn.complete_info().selected
+end
+
 return M

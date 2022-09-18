@@ -1,4 +1,6 @@
 local hydra = require 'hydra'
+local utils = require 'utils'
+local luasnip = require 'luasnip'
 local cmd = vim.cmd
 local M = {}
 
@@ -53,13 +55,54 @@ M.telescope = {
 
 M.luasnip = {
     i = {
+        -- luasnip
         ['<C-n>'] = '<Plug>luasnip-next-choice',
         ['<C-p>'] = '<Plug>luasnip-prev-choice',
     },
     s = {
         ['<C-n>'] = '<Plug>luasnip-next-choice',
         ['<C-p>'] = '<Plug>luasnip-prev-choice',
-    }
+    },
+}
+
+M.completion = {
+    i = {
+        -- autocomplete
+        ['<Esc>'] = function()
+            return utils.pumvisible() and '<C-e><Esc>' or '<Esc>'
+        end,
+        ['<C-c>'] = function()
+            return utils.pumvisible() and '<C-e><C-c>' or '<C-c>'
+        end,
+        ['<BS>'] = function()
+            return utils.pumvisible() and '<C-e><BS>' or '<BS>'
+        end,
+        ['<CR>'] = function()
+            return utils.pumvisible() and (utils.get_complete_selected() == -1 and '<C-e><CR>' or '<C-y>') or '<CR>'
+        end,
+        ['<S-Tab>'] = function()
+            if utils.pumvisible() then
+                return '<C-p>'
+            else
+                if luasnip.jumpable(-1) then
+                    return '<C-e><Plug>luasnip-jump-prev'
+                else
+                    return '<S-Tab>'
+                end
+            end
+        end,
+        ['<Tab>'] = function()
+            if utils.pumvisible() then
+                return utils.get_complete_selected() == -1 and '<C-n><C-y>' or '<C-n>'
+            else
+                if luasnip.expand_or_jumpable() then
+                    return '<C-e><Plug>luasnip-expand-or-jump'
+                else
+                    return '<Tab>'
+                end
+            end
+        end,
+    },
 }
 
 hydra {
