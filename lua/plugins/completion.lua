@@ -25,12 +25,30 @@ vim.g.coq_settings = {
     clients = {
         ['snippets.enabled'] = false,
         ['tmux.enabled'] = false,
-        -- lsp = {
-        --     always_on_top = {},
-        -- },
+        lsp = {
+            weight_adjust = 1.5,
+        },
+        tags = {
+            weight_adjust = 0.8,
+        },
+        paths = {
+            weight_adjust = 1.7,
+        },
+        tree_sitter = {
+            weight_adjust = 1.2,
+        },
+        buffers = {
+            weight_adjust = 0.5,
+        },
     },
-    -- match = {},
-    -- weights = {},
+    match = {
+        exact_matches = 1,
+        look_ahead = 4,
+    },
+    weights = {
+        prefix_matches = 1.6,
+        recency = 1.5,
+    },
     -- completion = {
     --     skip_after = { '{', '}', '[', ']' },
     -- },

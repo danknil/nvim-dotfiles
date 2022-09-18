@@ -44,7 +44,6 @@ local function setup_lua_lsp()
         }
     end
 end
-
 vim.api.nvim_create_autocmd('DirChanged', {
     pattern = 'global',
     callback = setup_lua_lsp,
@@ -91,5 +90,3 @@ require('lint').linters_by_ft = {
     tex = { 'vale' },
     markdown = { 'markdownlint', 'vale' },
 }
-
-maps:load_mappings('lsp', { noremap = true })

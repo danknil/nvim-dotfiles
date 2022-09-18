@@ -24,6 +24,7 @@ local pkgs = {
     'neovim/nvim-lspconfig',
     'mfussenegger/nvim-lint',
     'mhartington/formatter.nvim',
+    'tamago324/nlsp-settings.nvim',
     { 'folke/lua-dev.nvim', opt = true },
 
     -- DAP
@@ -36,8 +37,7 @@ local pkgs = {
     -- coq
     { 'ms-jpq/coq_nvim', branch = 'coq' },
     { 'ms-jpq/coq.thirdparty', branch = '3p' },
-    'mendes-davi/coq_luasnip',
-    'tamago324/nlsp-settings.nvim',
+    -- 'mendes-davi/coq_luasnip',
 
     -- -- cmp
     -- 'hrsh7th/nvim-cmp',
