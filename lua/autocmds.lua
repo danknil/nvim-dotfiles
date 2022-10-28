@@ -1,8 +1,9 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 local util = require 'utils'
-local disable_ft = { 'TelescopePrompt', 'netrw' }
 local job = require 'plenary.job'
+
+local disable_ft = { 'TelescopePrompt', 'netrw', 'zsh' }
 
 augroup('lint', { clear = true })
 autocmd('BufWritePost', {

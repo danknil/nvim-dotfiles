@@ -26,7 +26,7 @@ vim.g.coq_settings = {
         ['snippets.enabled'] = false,
         ['tmux.enabled'] = false,
         lsp = {
-            weight_adjust = 1.5,
+            weight_adjust = 1.4,
         },
         tags = {
             weight_adjust = 0.8,
@@ -35,15 +35,17 @@ vim.g.coq_settings = {
             weight_adjust = 1.7,
         },
         tree_sitter = {
-            weight_adjust = 1.2,
+            slow_threshold = 0.2,
+            weight_adjust = 1.1,
         },
         buffers = {
-            weight_adjust = 0.5,
+            weight_adjust = 0.9,
+            match_syms = true
         },
     },
     match = {
         exact_matches = 1,
-        look_ahead = 4,
+        look_ahead = 1,
     },
     weights = {
         prefix_matches = 1.6,
@@ -53,9 +55,9 @@ vim.g.coq_settings = {
     --     skip_after = { '{', '}', '[', ']' },
     -- },
     display = {
-        ['ghost_text.enabled'] = false,
+        ['ghost_text.enabled'] = true,
         pum = {
-            fast_close = false,
+            fast_close = true,
             y_max_len = 8,
             source_context = { '', '' },
             kind_context = { ' ', ' ' },

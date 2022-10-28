@@ -28,7 +28,7 @@ opt.numberwidth = 2
 opt.ruler = false
 
 -- disable nvim intro
-opt.shortmess:append 'FcsI'
+opt.shortmess:append 'FcsIW'
 
 -- fold settings
 opt.foldexpr = 'nvim_treesitter#foldexpr()'
@@ -40,7 +40,7 @@ opt.splitbelow = true
 opt.splitright = true
 opt.tabstop = 8
 opt.termguicolors = true
-opt.timeoutlen = 300
+opt.timeoutlen = 400
 opt.undofile = true
 opt.scrolloff = 8
 opt.sidescrolloff = 8

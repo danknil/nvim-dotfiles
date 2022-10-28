@@ -93,7 +93,7 @@ M.completion = {
         end,
         ['<Tab>'] = function()
             if luasnip.expandable() then
-                return '<C-e><Plug>luasnip-expand-or-jump'
+                return '<C-e><Plug>luasnip-expand'
             end
             if utils.pumvisible() then
                 return utils.get_complete_selected() == -1 and '<C-n><C-y>' or '<C-n>'
