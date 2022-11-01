@@ -25,6 +25,7 @@ local pkgs = {
     'mfussenegger/nvim-lint',
     'mhartington/formatter.nvim',
     'tamago324/nlsp-settings.nvim',
+    { 'mfussenegger/nvim-jdtls', opt = true },
     { 'folke/lua-dev.nvim', opt = true },
 
     -- DAP
