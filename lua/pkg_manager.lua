@@ -39,6 +39,7 @@ local pkgs = {
     -- Telescope
     'nvim-telescope/telescope.nvim',
     'nvim-telescope/telescope-project.nvim',
+    'nvim-telescope/telescope-ui-select.nvim',
     { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
 
     -- Mason nvim
@@ -51,12 +52,12 @@ local pkgs = {
     'lukas-reineke/indent-blankline.nvim',
     'lewis6991/gitsigns.nvim',
     'folke/todo-comments.nvim',
-    'stevearc/dressing.nvim',
 
     -- Misc
     'jghauser/mkdir.nvim',
     'luukvbaal/stabilize.nvim',
     'Juksuu/worktrees.nvim',
+    'gpanders/editorconfig.nvim',
 }
 
 local function clone_paq()

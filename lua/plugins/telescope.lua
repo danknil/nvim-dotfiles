@@ -26,6 +26,7 @@ telescope.setup {
         -- builtin picker
     },
     extensions = {
+        ['ui-select'] = {},
         fzf = {
             fuzzy = true, -- false will only do exact matching
             override_generic_sorter = true, -- override the generic sorter
@@ -37,5 +38,7 @@ telescope.setup {
 
 telescope.load_extension 'fzf'
 telescope.load_extension 'project'
+telescope.load_extension 'worktrees'
+telescope.load_extension 'ui-select'
 
 maps:load_mappings('telescope', { silent = true, noremap = true })

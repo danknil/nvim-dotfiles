@@ -51,7 +51,15 @@ M.telescope = {
         ['<leader>tt'] = '<cmd>lua require"telescope.builtin".treesitter()<cr>',
         ['<leader>tg'] = '<cmd>lua require"telescope.builtin".live_grep()<cr>',
         ['<leader>tb'] = '<cmd>lua require"telescope.builtin".buffers()<cr>',
+        ['<leader>xl'] = '<cmd>lua require"telescope".extensions.worktrees.list_worktrees()<cr>'
     },
+}
+
+M.worktrees = {
+    n = {
+        ['<leader>xn'] = '<cmd>lua require"worktrees".new_worktree()<cr>',
+        ['<leader>xe'] = '<cmd>lua require"worktrees".new_worktree(true)<cr>',
+    }
 }
 
 M.luasnip = {

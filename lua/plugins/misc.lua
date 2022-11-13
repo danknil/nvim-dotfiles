@@ -72,7 +72,6 @@ require('todo-comments').setup {
         -- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
     },
 }
--- FIX:
 
 require('indent_blankline').setup {
     show_current_context = true,
@@ -83,3 +82,6 @@ require('indent_blankline').setup {
 
 -- Moves
 require('leap').set_default_keymaps()
+
+require('worktrees').setup {}
+maps:load_mappings('worktrees', { noremap = true, silent = true })
