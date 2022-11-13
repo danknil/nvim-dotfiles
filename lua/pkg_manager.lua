@@ -7,30 +7,8 @@ local pkgs = {
     'kyazdani42/nvim-web-devicons',
     'nvim-treesitter/nvim-treesitter',
     'nvim-treesitter/playground',
-    'nathom/filetype.nvim',
     'rebelot/kanagawa.nvim',
     'lewis6991/impatient.nvim',
-
-    -- Moves
-    'tpope/vim-repeat',
-    'max397574/better-escape.nvim',
-    'kylechui/nvim-surround',
-    'ggandor/leap.nvim',
-    'numToStr/Comment.nvim',
-    'anuvyklack/hydra.nvim',
-    'RRethy/nvim-treesitter-textsubjects',
-
-    -- LSP
-    'neovim/nvim-lspconfig',
-    'mfussenegger/nvim-lint',
-    'mhartington/formatter.nvim',
-    'tamago324/nlsp-settings.nvim',
-    { 'mfussenegger/nvim-jdtls', opt = true },
-    { 'folke/lua-dev.nvim', opt = true },
-
-    -- DAP
-    'mfussenegger/nvim-dap',
-    'rcarriga/nvim-dap-ui',
 
     -- snippets
     'L3MON4D3/LuaSnip',
@@ -38,14 +16,25 @@ local pkgs = {
     -- coq
     { 'ms-jpq/coq_nvim', branch = 'coq' },
     { 'ms-jpq/coq.thirdparty', branch = '3p' },
-    -- 'mendes-davi/coq_luasnip',
 
-    -- -- cmp
-    -- 'hrsh7th/nvim-cmp',
-    -- 'saadparwaiz1/cmp_luasnip',
-    -- 'hrsh7th/cmp-nvim-lsp',
-    -- 'hrsh7th/cmp-buffer',
-    -- 'hrsh7th/cmp-path',
+    -- Moves
+    'numToStr/Comment.nvim',
+    'tpope/vim-repeat',
+    'kylechui/nvim-surround',
+    'ggandor/leap.nvim',
+    'ggandor/leap-ast.nvim',
+
+    -- LSP
+    'neovim/nvim-lspconfig',
+    'jose-elias-alvarez/null-ls.nvim',
+    'tamago324/nlsp-settings.nvim',
+    'folke/trouble.nvim',
+    { 'mfussenegger/nvim-jdtls', opt = true },
+    { 'folke/lua-dev.nvim', opt = true },
+
+    -- DAP
+    'mfussenegger/nvim-dap',
+    'rcarriga/nvim-dap-ui',
 
     -- Telescope
     'nvim-telescope/telescope.nvim',
@@ -63,11 +52,11 @@ local pkgs = {
     'lewis6991/gitsigns.nvim',
     'folke/todo-comments.nvim',
     'stevearc/dressing.nvim',
-    'anuvyklack/pretty-fold.nvim',
 
     -- Misc
     'jghauser/mkdir.nvim',
     'luukvbaal/stabilize.nvim',
+    'Juksuu/worktrees.nvim',
 }
 
 local function clone_paq()
@@ -81,7 +70,7 @@ local function clone_paq()
     }
 end
 
-function bootstrap()
+local function bootstrap()
     -- Load Paq
     vim.cmd [[ packadd paq-nvim ]]
     local paq = require 'paq'

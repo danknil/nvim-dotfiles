@@ -1,7 +1,5 @@
-local hydra = require 'hydra'
 local utils = require 'utils'
 local luasnip = require 'luasnip'
-local cmd = vim.cmd
 local M = {}
 
 function M:load_mappings(mappings, opts)
@@ -13,19 +11,20 @@ function M:load_mappings(mappings, opts)
 end
 
 M.general = {
-    i = {
-        ['<C-h>'] = '<Left>',
-        ['<C-j>'] = '<Down>',
-        ['<C-k>'] = '<Up>',
-        ['<C-l>'] = '<Right>',
-    },
     n = {
         ['<space>'] = '<cmd>noh<cr>',
-        ['<leader>e'] = '<cmd>Vex<cr>',
+        ['<leader>e'] = ':e ' .. vim.fn.expand('%'),
         ['<C-c>'] = '<cmd>%y+<cr>',
         ['<Tab>'] = '<cmd>bn<cr>',
         ['<S-Tab>'] = '<cmd>bp<cr>',
+        ['"f'] = require'leap-ast'.leap,
     },
+    x = {
+        ['"f'] = require'leap-ast'.leap,
+    },
+    o = {
+        ['"f'] = require'leap-ast'.leap,
+    }
 }
 
 M.lsp = {
@@ -39,7 +38,9 @@ M.lsp = {
         ['<leader>rn'] = vim.lsp.buf.rename,
         ['<leader>ca'] = vim.lsp.buf.code_action,
         ['gr'] = vim.lsp.buf.references,
-        ['<leader>bf'] = '<cmd>Format<cr>',
+        ['<leader>bf'] = function()
+            vim.lsp.buf.format { async = true }
+        end,
     },
 }
 
@@ -48,7 +49,7 @@ M.telescope = {
         ['<leader>f'] = '<cmd>lua require"telescope.builtin".find_files()<cr>',
         ['<leader>td'] = '<cmd>lua require"telescope.builtin".diagnostics()<cr>',
         ['<leader>tt'] = '<cmd>lua require"telescope.builtin".treesitter()<cr>',
-        ['<leader>tp'] = '<cmd>lua require"telescope".extensions.project.project()<cr>',
+        ['<leader>tg'] = '<cmd>lua require"telescope.builtin".live_grep()<cr>',
         ['<leader>tb'] = '<cmd>lua require"telescope.builtin".buffers()<cr>',
     },
 }
@@ -97,7 +98,7 @@ M.completion = {
             end
             if utils.pumvisible() then
                 return utils.get_complete_selected() == -1 and '<C-n><C-y>' or '<C-n>'
-            else 
+            else
                 if luasnip.expand_or_jumpable() then
                     return '<C-e><Plug>luasnip-expand-or-jump'
                 else
@@ -105,40 +106,6 @@ M.completion = {
                 end
             end
         end,
-    },
-}
-
-hydra {
-    name = 'Window manager',
-    hint = 'statusline',
-    mode = 'n',
-    body = '<C-w>',
-    config = {
-        color = 'red',
-    },
-    heads = {
-        -- move between windows
-        { 'h', '<C-w>h' },
-        { 'j', '<C-w>j' },
-        { 'k', '<C-w>k' },
-        { 'l', '<C-w>l' },
-
-        -- resizing window
-        { 'H', '<C-w>3<' },
-        { 'L', '<C-w>3>' },
-        { 'K', '<C-w>2+' },
-        { 'J', '<C-w>2-' },
-
-        -- equalize window sizes
-        { 'e', '<C-w>=' },
-
-        -- close active window
-        { 'q', ':q<cr>' },
-
-        -- exit this Hydra
-        { 'Q', nil, { exit = true, nowait = true } },
-        { ';', nil, { exit = true, nowait = true } },
-        { '<Esc>', nil, { exit = true, nowait = true } },
     },
 }
 

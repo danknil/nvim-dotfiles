@@ -5,14 +5,6 @@ local job = require 'plenary.job'
 
 local disable_ft = { 'TelescopePrompt', 'netrw', 'zsh' }
 
-augroup('lint', { clear = true })
-autocmd('BufWritePost', {
-    group = 'lint',
-    callback = function()
-        require('lint').try_lint()
-    end,
-})
-
 augroup('numbs', { clear = true })
 autocmd('InsertEnter', {
     group = 'numbs',
