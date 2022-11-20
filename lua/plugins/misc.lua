@@ -7,6 +7,7 @@ local g = vim.g
 require('stabilize').setup()
 
 -- UI
+require('Comment').setup {}
 require('gitsigns').setup {}
 require('todo-comments').setup {
     signs = true, -- show icons in the signs column
@@ -72,6 +73,7 @@ require('todo-comments').setup {
         -- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
     },
 }
+maps:load_mappings('todo', { noremap = true, silent = true })
 
 require('indent_blankline').setup {
     show_current_context = true,
@@ -85,3 +87,7 @@ require('leap').set_default_keymaps()
 
 require('worktrees').setup {}
 maps:load_mappings('worktrees', { noremap = true, silent = true })
+
+-- LSP
+require('trouble').setup {}
+maps:load_mappings('trouble', { noremap = true, silent = true })

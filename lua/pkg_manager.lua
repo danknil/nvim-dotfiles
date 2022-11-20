@@ -29,8 +29,8 @@ local pkgs = {
     'jose-elias-alvarez/null-ls.nvim',
     'tamago324/nlsp-settings.nvim',
     'folke/trouble.nvim',
-    { 'mfussenegger/nvim-jdtls', opt = true },
-    { 'folke/lua-dev.nvim', opt = true },
+    'mfussenegger/nvim-jdtls',
+    'folke/lua-dev.nvim',
 
     -- DAP
     'mfussenegger/nvim-dap',

@@ -47,9 +47,9 @@ local null_ls_sources = {
     null_ls.builtins.formatting.golines,
     null_ls.builtins.formatting.gofumpt,
     null_ls.builtins.diagnostics.revive,
-    -- c and c#
+    -- c
     null_ls.builtins.formatting.astyle.with {
-        filetypes = { 'c', 'cs' },
+        filetypes = { 'c' },
     },
     -- rust
     null_ls.builtins.formatting.rustfmt,
