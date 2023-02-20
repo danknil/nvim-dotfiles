@@ -63,12 +63,12 @@ M.worktrees = {
 M.luasnip = {
     i = {
         -- luasnip
-        ['<C-n>'] = '<Plug>luasnip-next-choice',
-        ['<C-p>'] = '<Plug>luasnip-prev-choice',
+        ['<C-n>'] = '<Plug>(luasnip-next-choice)',
+        ['<C-p>'] = '<Plug>(luasnip-prev-choice)',
     },
     s = {
-        ['<C-n>'] = '<Plug>luasnip-next-choice',
-        ['<C-p>'] = '<Plug>luasnip-prev-choice',
+        ['<C-n>'] = '<Plug>(luasnip-next-choice)',
+        ['<C-p>'] = '<Plug>(luasnip-prev-choice)',
     },
 }
 
@@ -89,7 +89,7 @@ M.completion = {
         end,
         ['<S-Tab>'] = function()
             if luasnip.jumpable(-1) then
-                return '<C-e><Plug>luasnip-jump-prev'
+                return '<C-e><cmd>lua require"luasnip".jump(-1)<cr>'
             else
                 if utils.pumvisible() then
                     return '<C-p>'
@@ -99,8 +99,8 @@ M.completion = {
             end
         end,
         ['<Tab>'] = function()
-            if luasnip.expandable() then
-                return '<C-e><Plug>luasnip-expand'
+            if luasnip.expand_or_jumpable() then
+                return '<C-e><cmd>lua require"luasnip".expand_or_jump()<cr>'
             else
                 if utils.pumvisible() then
                     return utils.get_complete_selected() == -1 and '<C-n><C-y>' or '<C-n>'

@@ -39,7 +39,6 @@ masonlsp.setup_handlers {
 local null_ls_sources = {
     -- all files
     null_ls.builtins.formatting.trim_whitespace,
-    null_ls.builtins.completion.luasnip,
     -- lua
     null_ls.builtins.formatting.stylua,
     -- go

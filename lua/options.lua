@@ -10,11 +10,6 @@ opt.showmode = false
 opt.title = true
 opt.clipboard = 'unnamedplus'
 
--- Indenting
-opt.expandtab = true
-opt.shiftwidth = 2
-opt.smartindent = true
-
 opt.fillchars = { eob = ' ' }
 opt.ignorecase = true
 opt.smartcase = true

@@ -1,4 +1,5 @@
 local autocmd = vim.api.nvim_create_autocmd
+local ts = require 'vim.treesitter'
 local M = {}
 
 function M.get_highest_error_severity()
@@ -10,9 +11,9 @@ function M.get_highest_error_severity()
     }
 
     for _, level in ipairs(error_severity) do
-        local diags = vim.diagnostic.get(0, { severity = { min = level } })
+        local diags = vim.diagnostic.get(0, { severity = level })
         if #diags > 0 then
-            return level, diags
+            return { level, diags }
         end
     end
 end
@@ -34,6 +35,28 @@ end
 function M.pumvisible()
     return vim.fn.pumvisible() ~= 0
 end
+
+function M.get_node_at_cursor(parser)
+    if not parser then
+        return
+    end
+    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+    row = row - 1
+    col = col - 1
+
+    local root = M.get_root(parser)
+    if not root then
+        return
+    end
+
+    return root:named_descendant_for_range(row, col, row, col)
+end
+
+function M.get_root(parser)
+    local root_tree = parser:parse()[1]
+    return root_tree and root_tree:root()
+end
+
 
 function M.get_complete_selected()
     return vim.fn.complete_info().selected

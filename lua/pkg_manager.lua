@@ -50,7 +50,6 @@ local pkgs = {
     -- UI
     'nvim-lualine/lualine.nvim',
     'lukas-reineke/indent-blankline.nvim',
-    'lewis6991/gitsigns.nvim',
     'folke/todo-comments.nvim',
 
     -- Misc
@@ -58,6 +57,13 @@ local pkgs = {
     'luukvbaal/stabilize.nvim',
     'Juksuu/worktrees.nvim',
     'gpanders/editorconfig.nvim',
+    'tpope/vim-sleuth',
+    'Snape3058/vim-smali',
+
+    -- Git
+    'tpope/vim-fugitive',
+    'tpope/vim-rhubarb',
+    'lewis6991/gitsigns.nvim',
 }
 
 local function clone_paq()
