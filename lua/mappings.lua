@@ -13,17 +13,10 @@ end
 M.general = {
     n = {
         ['<space>'] = '<cmd>noh<cr>',
-        ['<leader>e'] = ':e ' .. vim.fn.expand '%',
+        -- ['<leader>e'] = ':e ' .. vim.fn.expand '%',
         ['<C-c>'] = '<cmd>%y+<cr>',
         ['<Tab>'] = '<cmd>bn<cr>',
         ['<S-Tab>'] = '<cmd>bp<cr>',
-        ['"f'] = require('leap-ast').leap,
-    },
-    x = {
-        ['"f'] = require('leap-ast').leap,
-    },
-    o = {
-        ['"f'] = require('leap-ast').leap,
     },
 }
 
@@ -42,21 +35,27 @@ M.lsp = {
     },
 }
 
-M.telescope = {
+M.leap_ast = {
     n = {
-        ['<leader>f'] = '<cmd>lua require"telescope.builtin".find_files()<cr>',
-        ['<leader>td'] = '<cmd>lua require"telescope.builtin".diagnostics()<cr>',
-        ['<leader>tt'] = '<cmd>lua require"telescope.builtin".treesitter()<cr>',
-        ['<leader>tg'] = '<cmd>lua require"telescope.builtin".live_grep()<cr>',
-        ['<leader>tb'] = '<cmd>lua require"telescope.builtin".buffers()<cr>',
-        ['<leader>xl'] = '<cmd>lua require"telescope".extensions.worktrees.list_worktrees()<cr>',
+        ['"f'] = require('leap-ast').leap,
+    },
+    x = {
+        ['"f'] = require('leap-ast').leap,
+    },
+    o = {
+        ['"f'] = require('leap-ast').leap,
     },
 }
 
-M.worktrees = {
+M.dial = {}
+
+M.telescope = {
     n = {
-        ['<leader>xn'] = '<cmd>lua require"worktrees".new_worktree()<cr>',
-        ['<leader>xe'] = '<cmd>lua require"worktrees".new_worktree(true)<cr>',
+        ['<leader>f'] = '<cmd>Telescope fd<cr>',
+        ['<leader>td'] = '<cmd>Telescope diagnostics<cr>',
+        ['<leader>tt'] = '<cmd>Telescope treesitter<cr>',
+        ['<leader>tg'] = '<cmd>lua require"telescope.builtin".live_grep()<cr>',
+        ['<leader>tb'] = '<cmd>lua require"telescope.builtin".buffers()<cr>',
     },
 }
 

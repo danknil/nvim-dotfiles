@@ -1,10 +1,22 @@
-require 'plugins.theme'
-require 'plugins.treesitter'
-require 'plugins.surround'
-require 'plugins.mason'
-require 'plugins.fold'
-require 'plugins.lsp'
-require 'plugins.completion'
-require 'plugins.statusline'
-require 'plugins.telescope'
-require 'plugins.misc'
+local M = {}
+local plugin_lists = {
+    'theme',
+    'treesitter',
+    'neorg',
+    'lsp',
+    'dap',
+    'mason',
+    'ui',
+    'git',
+    'statusline',
+    'telescope',
+    'dashboard',
+    'editing',
+    'completion',
+}
+
+for _, v in ipairs(plugin_lists) do
+    vim.tbl_extend('keep', M, require('plugins.' .. v))
+end
+
+return M
