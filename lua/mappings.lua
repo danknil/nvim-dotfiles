@@ -13,7 +13,7 @@ end
 M.general = {
     n = {
         ['<space>'] = '<cmd>noh<cr>',
-        -- ['<leader>e'] = ':e ' .. vim.fn.expand '%',
+        ['<leader>e'] = ':e<space>' .. vim.fn.expand '%',
         ['<C-c>'] = '<cmd>%y+<cr>',
         ['<Tab>'] = '<cmd>bn<cr>',
         ['<S-Tab>'] = '<cmd>bp<cr>',
@@ -61,7 +61,6 @@ M.telescope = {
 
 M.luasnip = {
     i = {
-        -- luasnip
         ['<C-n>'] = '<Plug>(luasnip-next-choice)',
         ['<C-p>'] = '<Plug>(luasnip-prev-choice)',
     },

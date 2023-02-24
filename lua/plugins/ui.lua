@@ -21,7 +21,7 @@ return {
         'folke/trouble.nvim',
         config = function()
             require('trouble').setup {}
-            maps:load_mappings('trouble', { noremap = true, silent = true })
+            require('mappings'):load_mappings('trouble', { noremap = true, silent = true })
         end,
     },
     {
