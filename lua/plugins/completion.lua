@@ -81,7 +81,7 @@ local function completion()
     }
 
     luasnip.setup {}
-    require('mappings').load_mappings('luasnip', { silent = true, noremap = true })
+    require('mappings'):load_mappings('luasnip', { silent = true, noremap = true })
 end
 
 -- TODO: add this icons

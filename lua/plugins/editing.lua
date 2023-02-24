@@ -8,7 +8,7 @@ return {
         'monaqa/dial.nvim',
         event = 'BufEnter',
         config = function()
-            require('mappings').load_mappings('dial', { silent = true })
+            require('mappings'):load_mappings('dial', { silent = true })
         end,
     },
     {
@@ -25,7 +25,7 @@ return {
         },
         config = function()
             require('leap').set_default_keymaps()
-            require('mappings').load_mappings('leap_ast', { silent = true })
+            require('mappings'):load_mappings('leap_ast', { silent = true })
         end,
     },
     {
