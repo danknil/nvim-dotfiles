@@ -3,6 +3,9 @@ local function completion()
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
 
+    local types = require 'cmp.types'
+    local str = require 'cmp.utils.str'
+
     vim.opt.completeopt = { 'menu', 'noselect' }
 
     luasnip.setup {}
@@ -10,22 +13,50 @@ local function completion()
     cmp.setup {
         window = {
             completion = {
+                border = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+                scrollbar = '║',
                 winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None',
                 col_offset = -3,
-                side_padding = 0,
+                side_padding = 1,
+            },
+            documentation = {
+                border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+                scrollbar = '║',
             },
         },
         formatting = {
+            fields = {
+                cmp.ItemField.Kind,
+                cmp.ItemField.Abbr,
+                cmp.ItemField.Menu,
+            },
             format = require('lspkind').cmp_format {
-                mode = 'symbol', -- show only symbol annotations
-                maxwidth = 50,
-                ellipsis_char = '...',
+                with_text = false,
+                before = function(entry, vim_item)
+                    -- Get the full snippet (and only keep first line)
+                    local word = entry:get_insert_text()
+                    if entry.completion_item.insertTextFormat == types.lsp.InsertTextFormat.Snippet then
+                        word = vim.lsp.util.parse_snippet(word)
+                    end
+                    word = str.oneline(word)
 
-                -- The function below will be called before any actual modifications from lspkind
-                -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-                -- before = function(entry, vim_item)
-                --     return vim_item
-                -- end,
+                    -- concatenates the string
+                    -- local max = 50
+                    -- if string.len(word) >= max then
+                    -- 	local before = string.sub(word, 1, math.floor((max - 3) / 2))
+                    -- 	word = before .. "..."
+                    -- end
+
+                    if
+                        entry.completion_item.insertTextFormat == types.lsp.InsertTextFormat.Snippet
+                        and string.sub(vim_item.abbr, -1, -1) == '~'
+                    then
+                        word = word .. '~'
+                    end
+                    vim_item.abbr = word
+
+                    return vim_item
+                end,
             },
         },
         snippet = {

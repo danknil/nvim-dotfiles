@@ -31,6 +31,7 @@ return {
     {
         'smjonas/inc-rename.nvim',
         event = 'BufEnter',
+        -- TODO: add mappings
         config = function()
             require('inc_rename').setup()
         end,
