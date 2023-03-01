@@ -1,22 +1,14 @@
 local M = {}
-local plugin_lists = {
-    'theme',
-    'treesitter',
-    'neorg',
-    'lsp',
-    'dap',
-    'mason',
-    'ui',
-    'git',
-    'statusline',
-    'telescope',
-    'dashboard',
-    'editing',
-    'completion',
-}
 
-for _, v in ipairs(plugin_lists) do
-    vim.tbl_extend('keep', M, require('plugins.' .. v))
+local scan = require 'plenary.scandir'
+local plugins = scan.scan_dir(vim.fn.stdpath 'config' .. '/lua/plugins/', { depth = 1 })
+
+for _, v in ipairs(plugins) do
+    if not v:match 'init.lua' then
+        local filename = v:match('[^/]*.lua$')
+        local filename = filename:sub(0, #filename - 4)
+        vim.tbl_extend('keep', M, require('plugins.' .. filename))
+    end
 end
 
 return M

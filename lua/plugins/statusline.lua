@@ -1,32 +1,32 @@
-local heirline = require 'heirline'
+local function heirline_setup()
+    local heirline = require 'heirline'
+    local conditions = require 'heirline.conditions'
+    local utils = require 'heirline.utils'
 
-local function get_statusline()
-    return {}
-end
+    local Align = { provider = '%=' }
+    local Space = { provider = ' ' }
 
-local function get_winbar()
-    return {}
-end
+    local StatusLines = {
+        hl = function()
+            if conditions.is_active() then
+                return 'StatusLine'
+            else
+                return 'StatusLineNC'
+            end
+        end,
+        -- the first statusline with no condition, or which condition returns true is used.
+        -- think of it as a switch case with breaks to stop fallthrough.
+        fallthrough = false,
+        -- statuslines
+    }
 
-local function get_tabline()
-    return {}
-end
-
-local function get_statuscolumn()
-    return {}
+    heirline.setup {}
 end
 
 return {
     {
         'rebelot/heirline.nvim',
-        event = 'UiEnter',
-        config = function()
-            heirline.setup {
-                statusline = get_statusline(),
-                winbar = get_winbar(),
-                tabline = get_tabline(),
-                statuscolumn = get_statuscolumn(),
-            }
-        end,
+        event = 'UIEnter',
+        config = heirline_setup,
     },
 }

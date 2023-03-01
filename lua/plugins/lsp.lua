@@ -2,9 +2,7 @@ local function lspconfig()
     local config = require 'lspconfig'
     local masonlsp = require 'mason-lspconfig'
     local null_ls = require 'null-ls'
-    require('neoconf').setup {
-        -- override any of the default settings here
-    }
+    require('neoconf').setup {}
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
     ---@diagnostic disable-next-line: unused-local
@@ -65,7 +63,7 @@ return {
 
     -- language specific
     -- TODO: change lazy to ft event
-    { 'mfussenegger/nvim-jdtls',  lazy = true },
-    { 'folke/neodev.nvim',        lazy = true },
+    { 'mfussenegger/nvim-jdtls', lazy = true },
+    { 'folke/neodev.nvim', lazy = true },
     { 'simrat39/rust-tools.nvim', lazy = true },
 }

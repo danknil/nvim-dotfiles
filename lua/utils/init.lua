@@ -36,6 +36,10 @@ function M.pumvisible()
     return vim.fn.pumvisible() ~= 0
 end
 
+function M.get_curr_bufdir()
+    return vim.api.nvim_buf_get_name(0):match '(.-)([^\\/]-%.?([^%.\\/]*))$'
+end
+
 function M.get_node_at_cursor(parser)
     if not parser then
         return
@@ -56,7 +60,6 @@ function M.get_root(parser)
     local root_tree = parser:parse()[1]
     return root_tree and root_tree:root()
 end
-
 
 function M.get_complete_selected()
     return vim.fn.complete_info().selected

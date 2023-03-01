@@ -9,6 +9,7 @@ local function completion()
     vim.opt.completeopt = { 'menu', 'noselect' }
 
     luasnip.setup {}
+    require('mappings'):load_mappings('luasnip', { silent = true, noremap = true })
 
     cmp.setup {
         window = {
@@ -104,48 +105,13 @@ local function completion()
             end, { 'i', 's' }),
         },
         sources = {
-            { name = 'path', priority = 5, max_item_count = 2 },
-            { name = 'luasnip', priority = 4, max_item_count = 4 },
+            { name = 'path', priority = 8, max_item_count = 2 },
+            { name = 'luasnip', priority = 5, max_item_count = 4 },
             { name = 'nvim_lsp', priority = 3, max_item_count = 16 },
-            { name = 'buffer', priority = 2, keyword_length = 2, max_item_count = 8 },
+            { name = 'buffer', priority = 1, keyword_length = 2, max_item_count = 8 },
         },
     }
-
-    luasnip.setup {}
-    require('mappings'):load_mappings('luasnip', { silent = true, noremap = true })
 end
-
--- TODO: add this icons
--- icons = {
---     mode = 'short',
---     mappings = {
---         Text = '',
---         Method = '',
---         Function = '',
---         Constructor = '',
---         Field = 'ﰠ',
---         Variable = '',
---         Class = 'ﴯ',
---         Interface = '',
---         Module = '',
---         Property = 'ﰠ',
---         Unit = '塞',
---         Value = '',
---         Enum = '',
---         Keyword = '',
---         Snippet = '',
---         Color = '',
---         File = '',
---         Reference = '',
---         Folder = '',
---         EnumMember = '',
---         Constant = '',
---         Struct = 'פּ',
---         Event = '',
---         Operator = '',
---         TypeParameter = '',
---     },
--- },
 
 return {
     -- completion
