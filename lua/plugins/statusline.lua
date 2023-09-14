@@ -1,46 +1,32 @@
-require('lualine').setup {
-    options = {
-        icons_enabled = false,
-        theme = 'auto',
-        component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
-        disabled_filetypes = {
-            statusline = {},
-            winbar = {},
-        },
-        ignore_focus = {},
-        always_divide_middle = true,
-        globalstatus = true,
-        refresh = {
-            statusline = 1000,
-            tabline = 1000,
-            winbar = 1000,
-        },
+local function heirline_setup()
+    local heirline = require 'heirline'
+    local conditions = require 'heirline.conditions'
+    local utils = require 'heirline.utils'
+
+    local Align = { provider = '%=' }
+    local Space = { provider = ' ' }
+
+    local StatusLines = {
+        hl = function()
+            if conditions.is_active() then
+                return 'StatusLine'
+            else
+                return 'StatusLineNC'
+            end
+        end,
+        -- the first statusline with no condition, or which condition returns true is used.
+        -- think of it as a switch case with breaks to stop fallthrough.
+        fallthrough = false,
+        -- statuslines
+    }
+
+    heirline.setup {}
+end
+
+return {
+    {
+        'rebelot/heirline.nvim',
+        event = 'UIEnter',
+        config = heirline_setup,
     },
-    sections = {
-        lualine_a = { 'mode' },
-        lualine_b = {},
-        lualine_c = { 'diff' },
-        lualine_x = { 'branch' },
-        lualine_y = {},
-        lualine_z = { 'location' },
-    },
-    inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = {},
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = {},
-    },
-    winbar = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = { 'diagnostics' },
-        lualine_x = { 'filetype' },
-        lualine_y = {},
-        lualine_z = { 'filename' },
-    },
-    inactive_winbar = {},
-    extensions = {},
 }
