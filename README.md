@@ -1,21 +1,9 @@
 # nvim-dotfiles
-  My dotfiles for neovim nightly(0.8+)
+  My dotfiles for neovim 0.9+
 
 ## How to install
   1. clone this repo in your config folder(*example* `git clone https://github.com/danknil/nvim-dotfiles.git ~/.config/nvim`)
   2. Run your nvim!
-
-## Features
-- plugin manager [paq-nvim](https://github.com/savq/paq-nvim)
-- best theme [kanagawa](https://github.com/rebelot/kanagawa.nvim)
-- completition via [coq\_nvim](https://github.com/ms-jpq/coq_nvim)
-- best snippet engine for neovim [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
-- surround text with [nvim-surround](https://github.com/kylechui/nvim-surround)
-- comment everything with [Comment](https://github.com/numToStr/Comment.nvim)
-- jumping like a kangaroo with [leap](https://github.com/ggandor/leap.nvim)
-- [better escape](https://github.com/max397574/better-escape.nvim) from insert
-- statusline and winbar via [lualine](https://github.com/nvim-lualine/lualine.nvim)
-- dress your select windows via [dressing.nvim](https://github.com/stevearc/dressing.nvim)
 
 ## Todo
   - [x] Beta release
@@ -30,5 +18,5 @@
 
 ## Maybe
   - [x] Feature showcase?
-  - [ ] Lazy loading?
+  - [x] Lazy loading?
   - [ ] Windows support?
