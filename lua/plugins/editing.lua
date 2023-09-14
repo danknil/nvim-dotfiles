@@ -2,7 +2,7 @@ return {
     {
         'numToStr/Comment.nvim',
         event = 'BufEnter',
-        config = require('Comment').setup,
+        config = function() require('Comment').setup() end,
     },
     {
         'monaqa/dial.nvim',
@@ -14,7 +14,7 @@ return {
     {
         'kylechui/nvim-surround',
         event = 'BufEnter',
-        config = require('nvim-surround').setup,
+        config = function() require('nvim-surround').setup() end,
     },
     {
         'ggandor/leap.nvim',
