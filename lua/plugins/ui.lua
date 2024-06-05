@@ -8,13 +8,9 @@ return {
     },
     {
         'lukas-reineke/indent-blankline.nvim',
+        main = "ibl",
         config = function()
-            require('indent_blankline').setup {
-                show_current_context = true,
-                show_current_context_start = false,
-                show_current_context_start_on_current_line = false,
-                char_list = { '│', '¦', '┆', '┊' },
-            }
+            require('ibl').setup { }
         end,
     },
     {
