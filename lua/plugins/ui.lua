@@ -27,12 +27,6 @@ return {
         end,
     },
     {
-        'luukvbaal/stabilize.nvim',
-        config = function ()
-            require'stabilize'.setup()
-        end,
-    },
-    {
         'folke/noice.nvim',
         config = function()
             require('noice').setup {
