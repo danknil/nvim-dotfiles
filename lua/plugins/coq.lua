@@ -3,7 +3,7 @@ return {
         'ms-jpq/coq_nvim',
         branch = 'coq',
         lazy = false,
-        config = function() 
+        config = function()
             vim.g.coq_settings = {
                 auto_start = 'shut-up',
                 xdg = true,
@@ -16,7 +16,7 @@ return {
                     snippets = {
                         short_name = 'SN',
                         weight_adjust = 2.5,
-                    };
+                    },
                     lsp = {
                         short_name = 'LSP',
                         weight_adjust = 2.3,
@@ -55,8 +55,8 @@ return {
                         y_max_len = 5,
                         y_ratio = 0.1,
                         x_max_len = 40,
-                        kind_context = { " [ ",  " ] " },
-                        source_context = { " ", " " },
+                        kind_context = { ' [ ', ' ] ' },
+                        source_context = { ' ', ' ' },
                     },
                     preview = {
                         border = 'single',
@@ -73,8 +73,9 @@ return {
             require('mappings'):load_mappings('coq', { noremap = true, silent = true, expr = true })
         end,
         dependencies = {
-            { "ms-jpq/coq.artifacts", branch = "artifacts" },
-            { 'ms-jpq/coq.thirdparty', branch = "3p" }
+            { 'ms-jpq/coq.artifacts',  branch = 'artifacts' },
+            { 'ms-jpq/coq.thirdparty', branch = '3p' },
+            'pta2002/intellitab.nvim',
         },
-    }
+    },
 }

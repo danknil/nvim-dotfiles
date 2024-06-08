@@ -20,7 +20,7 @@ return {
             'nvimtools/none-ls.nvim',
             'tamago324/nlsp-settings.nvim',
 
-            { "ms-jpq/coq_nvim", branch = "coq" },
+            { 'ms-jpq/coq_nvim', branch = "coq" },
         },
         config = lspconfig,
     },

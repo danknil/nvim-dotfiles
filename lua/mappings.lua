@@ -22,6 +22,7 @@ M.general = {
             end,
             { expr = true },
         },
+
         ['<C-c>'] = { '<cmd>%y+<cr>', { silent = true } },
         ['<Tab>'] = { '<cmd>bn<cr>', { silent = true } },
         ['<S-Tab>'] = { '<cmd>bp<cr>', { silent = true } },
@@ -46,38 +47,64 @@ M.lsp = {
     },
 }
 
-M.leap_ast = {
-    n = {
-        ['"f'] = { require('leap-ast').leap, {} },
-    },
-    x = {
-        ['"f'] = { require('leap-ast').leap, {} },
-    },
-    o = {
-        ['"f'] = { require('leap-ast').leap, {} },
+M.coq = {
+    i = {
+        ['<Esc>'] = 
+        {
+            function()
+                return utils.pumvisible() and '<C-e><Esc>' or '<Esc>'
+            end,
+            {}
+        },
+        ['<C-c>'] = 
+        {
+            function()
+                return utils.pumvisible() and '<C-e><C-c>' or '<C-c>'
+            end,
+            {}
+        },
+        ['<BS>'] = 
+        {
+            function()
+                return utils.pumvisible() and '<C-e><BS>' or '<BS>'
+            end,
+            {}
+        },
+        ['<CR>'] = 
+        {
+            function()
+                return utils.pumvisible() and (utils.get_complete_selected() == -1 and '<C-e><CR>' or '<C-y>') or '<CR>'
+            end,
+            {}
+        },
+        ['<S-Tab>'] = 
+        {
+            function()
+                return utils.pumvisible() and '<C-p>' or '<S-Tab>'
+            end,
+            {}
+        },
+        ['<Tab>'] = 
+        {
+            function()
+                if utils.pumvisible() then
+                    return utils.get_complete_selected() == -1 and '<C-n><C-y>' or '<C-n>'
+                else
+                    require('intellitab').indent()
+                end
+            end,
+            {}
+        },
     },
 }
 
-M.dial = {}
-
 M.telescope = {
     n = {
-        ['<leader>f'] = { '<cmd>Telescope fd<cr>', {} },
+        ['<leader>f'] = { '<cmd>Telescope find_files<cr>', {} },
         ['<leader>td'] = { '<cmd>Telescope diagnostics<cr>', {} },
         ['<leader>tt'] = { '<cmd>Telescope treesitter<cr>', {} },
         ['<leader>tg'] = { '<cmd>lua require"telescope.builtin".live_grep()<cr>', {} },
         ['<leader>tb'] = { '<cmd>lua require"telescope.builtin".buffers()<cr>', {} },
-    },
-}
-
-M.luasnip = {
-    i = {
-        ['<C-n>'] = { '<Plug>(luasnip-next-choice)', {} },
-        ['<C-p>'] = { '<Plug>(luasnip-prev-choice)', {} },
-    },
-    s = {
-        ['<C-n>'] = { '<Plug>(luasnip-next-choice)', {} },
-        ['<C-p>'] = { '<Plug>(luasnip-prev-choice)', {} },
     },
 }
 
