@@ -16,7 +16,7 @@ return {
                         local mode, mode_hl = _G.MiniStatusline.section_mode { trunc_width = 120 }
                         local diff = _G.MiniStatusline.section_diff { trunc_width = 75 }
                         local filename = _G.MiniStatusline.section_filename { trunc_width = 140 }
-                        local location = _G.MiniStatusline.section_location { trunc_width = 75 }
+                        local location = _G.MiniStatusline.section_location { trunc_width = 9999 }
                         local search = _G.MiniStatusline.section_searchcount { trunc_width = 75 }
 
                         return _G.MiniStatusline.combine_groups {
@@ -69,6 +69,7 @@ return {
             require('mini.comment').setup {}
             require('mini.cursorword').setup {}
             require('mini.git').setup {}
+            require('mini.diff').setup {}
         end,
     },
 }

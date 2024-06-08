@@ -2,7 +2,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     neovim.url = "github:nix-community/neovim-nightly-overlay";
-    stylix.url = "";
+    stylix.url = "github:danth/stylix";
   };
   outputs = inputs: 
   {
