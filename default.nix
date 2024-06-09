@@ -1,10 +1,10 @@
-inputs: { lib, config, pkgs, ... }: 
+inputs: { lib, config, pkgs, ... }:
 let
   inherit (inputs) stylix neovim;
   inherit (lib) mkIf mkEnableOption;
 
   cfg = config.targets.danknil.neovim;
-  
+
   stylixColorscheme = with config.lib.stylix.colors; ''{
     base00 = ${base00},
     base01 = ${base01},

@@ -4,10 +4,9 @@
     neovim.url = "github:nix-community/neovim-nightly-overlay";
     stylix.url = "github:danth/stylix";
   };
-  outputs = inputs: 
-  {
+  outputs = inputs: {
     homeManagerModules = {
-      default = ./ inputs;
+      default = (import "./") inputs;
     };
   };
 }

@@ -8,25 +8,42 @@ local function lspconfig()
         require('mappings'):load_mappings('lsp', bufopts)
     end
 
-    local null_ls_sources = {}
+    vim.g.coq_settings.auto_start = 'shut-up'
 
-    null_ls.setup { sources = null_ls_sources }
+    local null_ls_sources = {
+        -- any
+        null_ls.builtins.diagnostics.trail_space,
+        null_ls.builtins.diagnostics.todo_comments,
+        -- nix
+        null_ls.builtins.formatting.alejandra,
+        null_ls.builtins.diagnostics.statix,
+        null_ls.builtins.code_actions.statix,
+        -- lua
+        null_ls.builtins.formatting.stylua,
+        -- markdown
+        null_ls.builtins.diagnostics.vale,
+        -- web(+markdown)
+        null_ls.builtins.formatting.prettierd,
+    }
+
+    null_ls.setup {
+        sources = null_ls_sources,
+        on_attach = on_attach,
+    }
 end
 
 return {
     {
         'neovim/nvim-lspconfig',
+        lazy = false,
         dependencies = {
             'nvimtools/none-ls.nvim',
             'tamago324/nlsp-settings.nvim',
-
-            { 'ms-jpq/coq_nvim', branch = "coq" },
         },
         config = lspconfig,
     },
 
     -- language specific
     { 'mfussenegger/nvim-jdtls', lazy = true },
-    { 'folke/neodev.nvim', lazy = true },
     { 'simrat39/rust-tools.nvim', lazy = true },
 }

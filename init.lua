@@ -17,7 +17,6 @@ _G.colorscheme = {
     base0E = '#945e80',
     base0F = '#e78a4e',
 }
-
 -- setting up vanilla settings
 require 'autocmds'
 require 'options'
@@ -35,6 +34,7 @@ if not vim.loop.fs_stat(path) then
     }
 end
 vim.opt.rtp:prepend(path)
+
 require('lazy').setup 'plugins'
 
 -- setting up vanilla binds

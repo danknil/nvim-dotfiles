@@ -65,4 +65,9 @@ function M.get_complete_selected()
     return vim.fn.complete_info().selected
 end
 
+function M.on_lsp_attach(client, bufnr)
+    local bufopts = { noremap = true, silent = true, buffer = bufnr }
+    require('mappings'):load_mappings('lsp', bufopts)
+end
+
 return M
