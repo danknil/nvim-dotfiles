@@ -90,7 +90,7 @@ M.coq = {
                 if utils.pumvisible() then
                     return utils.get_complete_selected() == -1 and '<C-n><C-y>' or '<C-n>'
                 else
-                    require('intellitab').indent()
+                    return '<Tab>'
                 end
             end,
             {}

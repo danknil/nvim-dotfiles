@@ -9,7 +9,6 @@ return {
         dependencies = {
             { 'ms-jpq/coq.artifacts',  branch = 'artifacts' },
             { 'ms-jpq/coq.thirdparty', branch = '3p' },
-            'pta2002/intellitab.nvim',
         },
     },
 }
