@@ -14,19 +14,21 @@ return {
         end,
     },
     {
-        'folke/trouble.nvim',
-        config = function()
-            require('trouble').setup {}
-            require('mappings'):load_mappings('trouble', { noremap = true, silent = true })
-        end,
-    },
-    {
         'stevearc/oil.nvim',
         config = function()
             require('oil').setup {}
         end,
         -- Optional dependencies
         dependencies = { 'nvim-tree/nvim-web-devicons' },
+    },
+    {
+        'cbochs/grapple.nvim',
+        dependencies = {
+            { 'nvim-tree/nvim-web-devicons', lazy = true },
+        },
+        config = function()
+            require('mappings'):load_mappings('grapple', { noremap = true, silent = true })
+        end,
     },
 
     'jghauser/mkdir.nvim',

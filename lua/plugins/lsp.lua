@@ -38,6 +38,7 @@ return {
         lazy = false,
         dependencies = {
             'nvimtools/none-ls.nvim',
+            'nvim-lua/plenary.nvim',
             'tamago324/nlsp-settings.nvim',
         },
         config = lspconfig,
