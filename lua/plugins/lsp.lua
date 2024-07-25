@@ -2,15 +2,21 @@ local function lspconfig()
     local config = require 'lspconfig'
     local null_ls = require 'null-ls'
 
+    require'neoconf'.setup {}
+
     ---@diagnostic disable-next-line: unused-local
     local on_attach = function(client, bufnr)
         local bufopts = { noremap = true, silent = true, buffer = bufnr }
-        require('mappings'):load_mappings('lsp', bufopts)
+        require'mappings':load_mappings('lsp', bufopts)
     end
 
     vim.g.coq_settings.auto_start = 'shut-up'
 
     local null_ls_sources = {
+        -- java
+        null_ls.builtins.formatting.astyle.with {
+            filetypes = { 'java' },
+        },
         -- any
         null_ls.builtins.diagnostics.trail_space,
         null_ls.builtins.diagnostics.todo_comments,
@@ -38,6 +44,7 @@ return {
         lazy = false,
         dependencies = {
             'nvimtools/none-ls.nvim',
+            'folke/neoconf.nvim',
             'nvim-lua/plenary.nvim',
             'tamago324/nlsp-settings.nvim',
         },
