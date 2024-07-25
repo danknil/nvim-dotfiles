@@ -16,6 +16,7 @@ local function lspconfig()
         -- java
         null_ls.builtins.formatting.astyle.with {
             filetypes = { 'java' },
+            extra_args = { '--project' },
         },
         -- any
         null_ls.builtins.diagnostics.trail_space,
