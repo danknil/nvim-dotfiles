@@ -44,7 +44,7 @@ M.lsp = {
         ['<leader>ca'] = { vim.lsp.buf.code_action, {} },
         ['<leader>bf'] = {
             function()
-                vim.lsp.buf.format { async = true }
+                utils.lsp_formatting()
             end,
             {},
         },

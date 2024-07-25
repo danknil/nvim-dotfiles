@@ -18,6 +18,18 @@ function M.get_highest_error_severity()
     end
 end
 
+function M.lsp_formatting()
+    vim.lsp.buf.format {
+        async = true,
+        filter = function(client)
+            -- FIXME: if null-ls source exist, then format with null-ls, lsp server otherwise
+            -- apply whatever logic you want (in this example, we'll only use null-ls)
+            return client.name == 'null-ls'
+        end,
+        bufnr = bufnr,
+    }
+end
+
 function M.autocmd_on_type(tb)
     if type(tb.filetype) == 'string' then
         tb.filetype = { tb.filetype }
