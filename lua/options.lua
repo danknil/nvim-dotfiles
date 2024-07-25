@@ -33,13 +33,19 @@ opt.signcolumn = 'yes'
 opt.splitbelow = true
 opt.splitright = true
 opt.tabstop = 8
-opt.termguicolors = true
+
 opt.timeoutlen = 400
 opt.undofile = true
 opt.scrolloff = 8
 opt.sidescrolloff = 8
 
 opt.listchars = { tab = "<_>", multispace = "--+", trail = "", extends = "⟩", precedes = "⟨" }
+
+opt.termguicolors = true
+vim.cmd [[
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+]]
 
 -- coq settings, cant be set inside config
 g.coq_settings = {
