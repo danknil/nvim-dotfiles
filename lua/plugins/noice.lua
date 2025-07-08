@@ -4,6 +4,7 @@ return {
         config = function()
             require('noice').setup {
                 cmdline = {
+                    view = 'cmdline',
                     format = {
                         search_down = {
                             view = 'cmdline',
@@ -14,7 +15,7 @@ return {
                     },
                 },
                 lsp = {
-                    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+                    -- Override markdown rendering so that **cmp** and other plugins use **Tree-sitter**
                     override = {
                         ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
                         ['vim.lsp.util.stylize_markdown'] = true,
@@ -35,7 +36,7 @@ return {
                     cmdline_popup = {
                         border = {
                             style = 'none',
-                            padding = { 2, 3 },
+                            padding = { 0, 3 },
                         },
                         filter_options = {},
                         win_options = {

@@ -8,7 +8,7 @@ autocmd('InsertEnter', {
     group = 'numbs',
     callback = function()
         if not vim.tbl_contains(disable_ft, vim.bo.filetype) then
-            vim.opt.colorcolumn = "80"
+            vim.opt.colorcolumn = '80'
             vim.opt.number = false
             vim.opt.relativenumber = false
         end
@@ -18,7 +18,7 @@ autocmd('InsertLeave', {
     group = 'numbs',
     callback = function()
         if not vim.tbl_contains(disable_ft, vim.bo.filetype) then
-            vim.opt.colorcolumn = ""
+            vim.opt.colorcolumn = ''
             vim.opt.number = true
             vim.opt.relativenumber = true
         end

@@ -4,10 +4,10 @@ return {
         'echasnovski/mini.nvim',
         config = function()
             -- setting up colorscheme
-            require('mini.base16').setup {
-                palette = colorscheme,
-                use_cterm = true,
-            }
+            -- require('mini.base16').setup {
+            --     palette = colorscheme,
+            --     use_cterm = true,
+            -- }
 
             -- require('mini.statusline').setup {
             --     content = {
@@ -73,7 +73,9 @@ return {
                 symbol = '▎',
             }
 
+            -- mini.pick setup
             require('mini.pick').setup {}
+            vim.ui.select = MiniPick.ui_select
             require('mappings'):load_mappings('minipick', { noremap = true, silent = true })
 
             require('mini.ai').setup {}

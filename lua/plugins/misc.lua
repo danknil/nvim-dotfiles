@@ -8,10 +8,7 @@ return {
     },
     {
         'folke/todo-comments.nvim',
-        config = function()
-            require('todo-comments').setup {}
-            require('mappings'):load_mappings('todo', { noremap = true, silent = true })
-        end,
+        opts = {},
     },
     {
         'stevearc/oil.nvim',
@@ -20,15 +17,6 @@ return {
         end,
         -- Optional dependencies
         dependencies = { 'nvim-tree/nvim-web-devicons' },
-    },
-    {
-        'cbochs/grapple.nvim',
-        dependencies = {
-            { 'nvim-tree/nvim-web-devicons', lazy = true },
-        },
-        config = function()
-            require('mappings'):load_mappings('grapple', { noremap = true, silent = true })
-        end,
     },
 
     'jghauser/mkdir.nvim',

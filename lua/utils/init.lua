@@ -24,7 +24,7 @@ function M.lsp_formatting()
         filter = function(client)
             -- FIXME: if null-ls source exist, then format with null-ls, lsp server otherwise
             -- apply whatever logic you want (in this example, we'll only use null-ls)
-            return client.name == 'null-ls'
+            return true
         end,
         bufnr = bufnr,
     }

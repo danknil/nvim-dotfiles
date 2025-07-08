@@ -17,6 +17,7 @@ _G.colorscheme = {
     base0E = '#5A4A78',
     base0F = '#655259',
 }
+
 -- setting up vanilla settings
 require 'autocmds'
 require 'options'

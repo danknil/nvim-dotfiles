@@ -42,9 +42,22 @@ M.lsp = {
         ['<C-k>'] = { vim.lsp.buf.signature_help, {} },
         ['<leader>rn'] = { vim.lsp.buf.rename, {} },
         ['<leader>ca'] = { vim.lsp.buf.code_action, {} },
+        -- ['<leader>bf'] = {
+        --     function()
+        --         utils.lsp_formatting()
+        --     end,
+        --     {},
+        -- },
+    },
+}
+
+M.conform = {
+    n = {
         ['<leader>bf'] = {
             function()
-                utils.lsp_formatting()
+                require('conform').format {
+                    async = true
+                }
             end,
             {},
         },
@@ -119,51 +132,14 @@ M.harpoon = {
 M.quickfix = {
     n = {
         ['<leader>q'] = {
-            '<cmd>copen<cr>',
-            {},
-        },
-    },
-}
-
-M.coq = {
-    i = {
-        ['<Esc>'] = {
-            function()
-                return utils.pumvisible() and '<C-e><Esc>' or '<Esc>'
+            function() 
+                require'quicker'.toggle()
             end,
             {},
         },
-        ['<C-c>'] = {
-            function()
-                return utils.pumvisible() and '<C-e><C-c>' or '<C-c>'
-            end,
-            {},
-        },
-        ['<BS>'] = {
-            function()
-                return utils.pumvisible() and '<C-e><BS>' or '<BS>'
-            end,
-            {},
-        },
-        ['<CR>'] = {
-            function()
-                return utils.pumvisible() and (utils.get_complete_selected() == -1 and '<C-e><CR>' or '<C-y>') or '<CR>'
-            end,
-            {},
-        },
-        ['<S-Tab>'] = {
-            function()
-                return utils.pumvisible() and '<C-p>' or '<S-Tab>'
-            end,
-            {},
-        },
-        ['<Tab>'] = {
-            function()
-                if utils.pumvisible() then
-                    return utils.get_complete_selected() == -1 and '<C-n><C-y>' or '<C-n>'
-                else
-                    return '<Tab>'
-                end
+        ['<leader>l'] = {
+            function() 
+                require'quicker'.toggle {loclist = true}
             end,
             {},
         },
@@ -178,59 +154,18 @@ M.minipick = {
             end,
             {},
         },
-        ['<leader>ld'] = {
-            function()
-                MiniPick.builtin.diagnostic()
-            end,
-            {},
-        },
-        ['<leader>ls'] = {
-            function()
-                MiniPick.builtin.lsp()
-            end,
-            {},
-        },
-        ['<leader>ts'] = {
-            function()
-                MiniPick.builtin.treesitter()
-            end,
-            {},
-        },
         ['<leader>g'] = {
             function()
                 MiniPick.builtin.grep_live { tool = 'rg' }
             end,
             {},
         },
-        ['<leader>b'] = {
+        ['<leader>bb'] = {
             function()
                 MiniPick.builtin.buffers { include_current = false }
             end,
             {},
         },
-    },
-}
-
-M.telescope = {
-    n = {
-        ['<leader>f'] = { '<cmd>Telescope find_files<cr>', {} },
-        ['<leader>td'] = { '<cmd>Telescope diagnostics<cr>', {} },
-        ['<leader>tt'] = { '<cmd>Telescope treesitter<cr>', {} },
-        ['<leader>tg'] = { '<cmd>lua require"telescope.builtin".live_grep()<cr>', {} },
-        ['<leader>tb'] = { '<cmd>lua require"telescope.builtin".buffers()<cr>', {} },
-    },
-}
-
-M.trouble = {
-    n = {
-        ['gr'] = { '<cmd>Trouble lsp_references<cr>', {} },
-        ['<leader>d'] = { '<cmd>Trouble workspace_diagnostics<cr>', {} },
-    },
-}
-
-M.todo = {
-    n = {
-        ['<leader>D'] = { '<cmd>TodoTelescope<cr>', {} },
     },
 }
 
