@@ -1,7 +1,7 @@
 local utils = require 'utils'
 local M = {}
 
-local disable_ft = { 'TelescopePrompt', 'netrw', 'zsh' }
+local disable_ft = { 'TelescopePrompt', 'netrw', 'zsh', 'oil' }
 
 function M:load_mappings(mappings, opts)
     for mode, mappings_list in pairs(self[mappings]) do
@@ -24,8 +24,9 @@ M.general = {
         },
 
         ['<C-c>'] = { '<cmd>%y+<cr>', { silent = true } },
-        -- ['<Tab>'] = { '<cmd>bn<cr>', { silent = true } },
-        -- ['<S-Tab>'] = { '<cmd>bp<cr>', { silent = true } },
+        ['<Tab>'] = { '<cmd>bn<cr>', { silent = true } },
+        ['<S-Tab>'] = { '<cmd>bp<cr>', { silent = true } },
+        ['<leader>bd'] = { '<cmd>bdelete', { silent = true } },
         ['<leader>y'] = { '"+y', { silent = true } },
         ['<leader>Y'] = { '"+Y', { silent = true } },
         ['<leader>p'] = { '"+p', { silent = true } },
@@ -42,38 +43,8 @@ M.lsp = {
         ['<C-k>'] = { vim.lsp.buf.signature_help, {} },
         ['<leader>rn'] = { vim.lsp.buf.rename, {} },
         ['<leader>ca'] = { vim.lsp.buf.code_action, {} },
-        -- ['<leader>bf'] = {
-        --     function()
-        --         utils.lsp_formatting()
-        --     end,
-        --     {},
-        -- },
-    },
-}
-
-M.conform = {
-    n = {
-        ['<leader>bf'] = {
-            function()
-                require('conform').format {
-                    async = true
-                }
-            end,
-            {},
-        },
-    },
-}
-
-M.grapple = {
-    n = {
-        ['<leader>a'] = { '<cmd>Grapple toggle<cr>', {} },
-        ['<leader>h'] = { '<cmd>Grapple toggle_tags<cr>', {} },
-        ['<F1>'] = { '<cmd>Grapple select index=1<cr>', {} },
-        ['<F2>'] = { '<cmd>Grapple select index=2<cr>', {} },
-        ['<F3>'] = { '<cmd>Grapple select index=3<cr>', {} },
-        ['<F4>'] = { '<cmd>Grapple select index=4<cr>', {} },
-        ['<Tab>'] = { '<cmd>Grapple cycle_tags next<cr>', {} },
-        ['<S-Tab>'] = { '<cmd>Grapple cycle_tags prev<cr>', {} },
+        ['<leader>lq'] = { vim.diagnostic.setqflist, {} },
+        ['<leader>bf'] = { utils.lsp_formatting, {} },
     },
 }
 
@@ -88,81 +59,52 @@ M.dropbar = {
     },
 }
 
-M.harpoon = {
-    n = {
-        ['<leader>a'] = {
-            function()
-                require('harpoon.mark').add_file()
-            end,
-            {},
-        },
-        ['<leader>h'] = {
-            function()
-                require('harpoon.ui').toggle_quick_menu()
-            end,
-            {},
-        },
-        ['<F1>'] = {
-            function()
-                require('harpoon.ui').nav_file(1)
-            end,
-            {},
-        },
-        ['<F2>'] = {
-            function()
-                require('harpoon.ui').nav_file(2)
-            end,
-            {},
-        },
-        ['<F3>'] = {
-            function()
-                require('harpoon.ui').nav_file(3)
-            end,
-            {},
-        },
-        ['<F4>'] = {
-            function()
-                require('harpoon.ui').nav_file(4)
-            end,
-            {},
-        },
-    },
-}
-
 M.quickfix = {
     n = {
         ['<leader>q'] = {
-            function() 
-                require'quicker'.toggle()
+            function()
+                require('quicker').toggle()
             end,
             {},
         },
         ['<leader>l'] = {
-            function() 
-                require'quicker'.toggle {loclist = true}
+            function()
+                require('quicker').toggle { loclist = true }
             end,
             {},
         },
     },
 }
 
-M.minipick = {
+M.picker = {
     n = {
         ['<leader>f'] = {
             function()
-                MiniPick.builtin.files { tool = 'rg' }
+                Snacks.picker.files()
             end,
             {},
         },
-        ['<leader>g'] = {
+        ['<leader>ts'] = {
             function()
-                MiniPick.builtin.grep_live { tool = 'rg' }
+                Snacks.picker.treesitter()
             end,
             {},
         },
-        ['<leader>bb'] = {
+        ['<leader>/'] = {
             function()
-                MiniPick.builtin.buffers { include_current = false }
+                Snacks.picker.grep()
+            end,
+            {},
+        },
+        ['<leader>tc'] = {
+            function()
+                Snacks.picker.todo_comments()
+            end,
+            {},
+        },
+        ['<leader>bf'] = {
+            function()
+                Snacks.picker.buffers()
             end,
             {},
         },
