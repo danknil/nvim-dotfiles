@@ -1,7 +1,7 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
-local disable_ft = { 'TelescopePrompt', 'netrw', 'zsh' }
+local disable_ft = { 'TelescopePrompt', 'netrw', 'zsh', 'oil' }
 
 augroup('numbs', { clear = true })
 autocmd('InsertEnter', {

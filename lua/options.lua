@@ -32,7 +32,7 @@ opt.foldlevelstart = 99
 opt.signcolumn = 'yes'
 opt.splitbelow = true
 opt.splitright = true
-opt.tabstop = 8
+opt.tabstop = 4
 
 opt.timeoutlen = 400
 opt.undofile = true
@@ -42,6 +42,7 @@ opt.sidescrolloff = 8
 opt.list = true
 opt.listchars = { trail = '·', eol = '↲', space = '·', tab = '▎·' }
 
+-- tmux setup
 opt.termguicolors = true
 vim.cmd [[
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
