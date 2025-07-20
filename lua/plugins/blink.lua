@@ -4,9 +4,8 @@ return {
         lazy = false,
         dependencies = {
             'rafamadriz/friendly-snippets',
-            { 'L3MON4D3/LuaSnip', version = 'v2.*' },
         },
-        -- version = 'v1.*',
+
         build = 'cargo build --release',
 
         ---@module 'blink.cmp'
@@ -67,60 +66,6 @@ return {
                     },
                 },
             },
-
-            -- keymap = { preset = 'super-tab' },
-            -- snippets.preset = 'luasnip',
-            -- sources = {
-            --     default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
-            --     providers = {
-            --         lsp = {
-            --             name = 'LSP',
-            --             module = 'blink.cmp.sources.lsp',
-            --             max_items = 5, -- maximum number of items to return
-            --             min_keyword_length = 2, -- minimum number of characters to trigger the provider
-            --             fallbacks = { 'buffer' },
-            --         },
-            --         lazydev = {
-            --             name = 'LazyDev',
-            --             fallbacks = { 'lsp' },
-            --             module = 'lazydev.integrations.blink',
-            --         },
-            --         path = {
-            --             name = 'Path',
-            --             module = 'blink.cmp.sources.path',
-            --             score_offset = 4,
-            --             max_items = 2, -- maximum number of items to return
-            --             min_keyword_length = 4, -- minimum number of characters to trigger the provider
-            --             opts = {
-            --                 trailing_slash = false,
-            --                 label_trailing_slash = true,
-            --                 get_cwd = function(context)
-            --                     return vim.fn.expand(('#%d:p:h'):format(context.bufnr))
-            --                 end,
-            --                 show_hidden_files_by_default = false,
-            --             },
-            --         },
-            --         snippets = {
-            --             name = 'Snippets',
-            --             module = 'blink.cmp.sources.snippets',
-            --             score_offset = 3,
-            --             opts = {
-            --                 friendly_snippets = true,
-            --                 search_paths = { vim.fn.stdpath 'config' .. '/snippets' },
-            --                 global_snippets = { 'all' },
-            --                 extended_filetypes = {},
-            --                 ignored_filetypes = {},
-            --             },
-            --         },
-            --         buffer = {
-            --             name = 'Buffer',
-            --             score_offset = -4,
-            --             module = 'blink.cmp.sources.buffer',
-            --         },
-            --     },
-            -- },
-            --
-            -- signature = { enabled = true },
         },
         -- allows extending the enabled_providers array elsewhere in your config
         -- without having to redefine it
