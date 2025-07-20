@@ -1,6 +1,5 @@
 local function lspconfig()
     local lspconfig = require 'lspconfig'
-    local mason_lspconfig = require 'mason-lspconfig'
     local capabilities = require('blink.cmp').get_lsp_capabilities(lspconfig.util.default_config.capabilities)
 
     ---@diagnostic disable-next-line: unused-local
@@ -14,33 +13,24 @@ local function lspconfig()
         capabilities = capabilities,
         on_attach = on_attach,
     })
-
-    -- for _, server in ipairs(mason_lspconfig.get_available_servers()) do
-    -- end
 end
 
 return {
     {
-        'williamboman/mason.nvim',
-        config = true,
+        "mason-org/mason-lspconfig.nvim",
+        opts = {},
         dependencies = {
-            {
-                'williamboman/mason-lspconfig.nvim',
-                opts = {
-                    automatic_enable = true,
-                },
-            },
+            { "mason-org/mason.nvim", opts = {} },
+            "neovim/nvim-lspconfig",
         },
     },
     {
         'neovim/nvim-lspconfig',
         lazy = false,
         dependencies = {
-            -- 'nvimtools/none-ls.nvim',
             'nvim-lua/plenary.nvim',
             'tamago324/nlsp-settings.nvim',
             'saghen/blink.cmp',
-            'williamboman/mason-lspconfig.nvim',
         },
         config = lspconfig,
     },
@@ -49,7 +39,7 @@ return {
     { 'mfussenegger/nvim-jdtls', lazy = true },
     {
         'mrcjkb/rustaceanvim',
-        version = '^5', -- Recommended
+        version = '^6', -- Recommended
         lazy = false, -- This plugin is already lazy
     },
     {

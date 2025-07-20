@@ -1,5 +1,4 @@
 local autocmd = vim.api.nvim_create_autocmd
-local ts = require 'vim.treesitter'
 local M = {}
 
 function M.get_highest_error_severity()
@@ -22,11 +21,13 @@ function M.lsp_formatting()
     vim.lsp.buf.format {
         async = true,
         filter = function(client)
-            -- FIXME: if null-ls source exist, then format with null-ls, lsp server otherwise
-            -- apply whatever logic you want (in this example, we'll only use null-ls)
-            return true
+            local generators = require('null-ls.generators').get_available(
+                vim.bo.filetype,
+                require('null-ls.methods').internal.FORMATTING
+            )
+            -- disable null-ls if no formatters found and enable only null-ls if found at least one
+            return #generators > 0 and client.name == 'null-ls' or client.name ~= 'null-ls'
         end,
-        bufnr = bufnr,
     }
 end
 
