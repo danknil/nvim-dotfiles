@@ -45,42 +45,29 @@ function M.autocmd_on_type(tb)
     })
 end
 
-function M.pumvisible()
-    return vim.fn.pumvisible() ~= 0
-end
-
 function M.get_curr_bufdir()
     return vim.api.nvim_buf_get_name(0):match '(.-)([^\\/]-%.?([^%.\\/]*))$'
 end
 
-function M.get_node_at_cursor(parser)
-    if not parser then
-        return
+-- function M.on_lsp_attach(client, bufnr)
+--     local bufopts = { noremap = true, silent = true, buffer = bufnr }
+--     require('mappings'):load_mappings('lsp', bufopts)
+-- end
+
+-- function M:map(mappings)
+--     for mode, mappings_list in pairs(self[mappings]) do
+--         for mapping, func in pairs(mappings_list) do
+--             vim.keymap.set(mode, mapping, func[1], func[2])
+--         end
+--     end
+-- end
+
+function M.map(mappings, opts)
+    for mode, mappings_list in pairs(mappings) do
+        for mapping, func in pairs(mappings_list) do
+            vim.keymap.set(mode, mapping, func, opts)
+        end
     end
-    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-    row = row - 1
-    col = col - 1
-
-    local root = M.get_root(parser)
-    if not root then
-        return
-    end
-
-    return root:named_descendant_for_range(row, col, row, col)
-end
-
-function M.get_root(parser)
-    local root_tree = parser:parse()[1]
-    return root_tree and root_tree:root()
-end
-
-function M.get_complete_selected()
-    return vim.fn.complete_info().selected
-end
-
-function M.on_lsp_attach(client, bufnr)
-    local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    require('mappings'):load_mappings('lsp', bufopts)
 end
 
 return M
