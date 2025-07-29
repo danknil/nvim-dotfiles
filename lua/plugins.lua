@@ -1,9 +1,9 @@
 vim.pack.add {
     -- neovim theme
     'https://github.com/rebelot/kanagawa.nvim',
-    -- lsp settings
+    -- inner lsp for cli
     'https://github.com/nvimtools/none-ls.nvim',
-    'https://github.com/neovim/nvim-lspconfig',
+    'https://github.com/nvim-lua/plenary.nvim',
 
     -- treesitter
     'https://github.com/nvim-treesitter/nvim-treesitter',
@@ -15,7 +15,6 @@ vim.pack.add {
     'https://github.com/ibhagwan/fzf-lua',
     'https://github.com/tpope/vim-sleuth',
     'https://github.com/mason-org/mason.nvim',
-    'https://github.com/nvim-lua/plenary.nvim',
 }
 
 require('mason').setup {}
