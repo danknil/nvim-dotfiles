@@ -17,29 +17,29 @@ none_ls.setup {
 
 vim.lsp.config('*', {
     root_markers = { '.git' },
-    -- capabilities = capabilities,
+    capabilities = require('blink.cmp').get_lsp_capabilities({}, true),
     on_attach = function(client, bufnr)
-        vim.keymap.set({ 'i', 's' }, '<C-l>', function()
-            if client.name == 'emmet_ls' then
-                local abbreviation, indent = vim.text.indent(0, vim.api.nvim_get_current_line())
-                local current_row = vim.api.nvim_win_get_cursor(0)[1]
-
-                vim.lsp.buf_request(
-                    0,
-                    ---@diagnostic disable-next-line: param-type-mismatch
-                    'emmet/expandAbbreviation',
-                    { abbreviation = abbreviation, language = vim.bo.filetype, options = {} },
-                    --- @param result string
-                    function(_, result, _, _)
-                        local res, _ = vim.text.indent(vim.bo.tabstop * indent, result)
-                        local lines = vim.split(res, '\n')
-                        vim.api.nvim_buf_set_lines(0, current_row - 1, current_row, false, lines)
-                    end
-                )
-
-                return ''
-            end
-        end, { expr = true, silent = true })
+        -- vim.keymap.set({ 'i', 's' }, '<C-l>', function()
+        --     if client.name == 'emmet_ls' then
+        --         local abbreviation, indent = vim.text.indent(0, vim.api.nvim_get_current_line())
+        --         local current_row = vim.api.nvim_win_get_cursor(0)[1]
+        --
+        --         vim.lsp.buf_request(
+        --             0,
+        --             ---@diagnostic disable-next-line: param-type-mismatch
+        --             'emmet/expandAbbreviation',
+        --             { abbreviation = abbreviation, language = vim.bo.filetype, options = {} },
+        --             --- @param result string
+        --             function(_, result, _, _)
+        --                 local res, _ = vim.text.indent(vim.bo.tabstop * indent, result)
+        --                 local lines = vim.split(res, '\n')
+        --                 vim.api.nvim_buf_set_lines(0, current_row - 1, current_row, false, lines)
+        --             end
+        --         )
+        --
+        --         return ''
+        --     end
+        -- end, { expr = true, silent = true })
 
         -- vim.keymap.set({ 'i', 's' }, '<C-l>', function()
         --     if client.name == 'emmet_ls' then
@@ -80,8 +80,8 @@ vim.lsp.config('*', {
     end,
 })
 
-vim.diagnostic.config { virtual_text = true }
-vim.cmd 'set completeopt+=noselect'
+vim.diagnostic.config { virtual_text = { current_line = true } }
+-- vim.cmd 'set completeopt+=noselect'
 
 vim.lsp.enable {
     'qmlls',

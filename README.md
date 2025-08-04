@@ -3,7 +3,8 @@
 
 ## Features
   - Native package manager
-  - Native lsp & completion
+  - Native lsp
+  - [blink.cmp](https://github.com/Saghen/blink.cmp) completion
   - Minimum plugins
 
 ## How to install

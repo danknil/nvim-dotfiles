@@ -4,6 +4,7 @@ vim.pack.add {
     -- inner lsp for cli
     'https://github.com/nvimtools/none-ls.nvim',
     'https://github.com/nvim-lua/plenary.nvim',
+    { src = 'https://github.com/Saghen/blink.cmp', version = vim.version.range '1.*' },
 
     -- treesitter
     'https://github.com/nvim-treesitter/nvim-treesitter',
@@ -23,5 +24,6 @@ require('colorizer').setup { '*' }
 require('oil').setup {}
 require('nvim-surround').setup {}
 
--- setup fzf-lua separately
+-- longer setups
 require 'fzf'
+require 'cmp'
