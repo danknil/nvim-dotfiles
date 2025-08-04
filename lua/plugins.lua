@@ -1,3 +1,23 @@
+local cmd = vim.api.nvim_create_user_command
+cmd('PackSync', function()
+    local to_delete = {}
+    for _, plugin in ipairs(vim.pack.get()) do
+        table.insert(to_delete, plugin.spec.name)
+    end
+    vim.pack.del(to_delete)
+    vim.pack.update()
+end, {
+    nargs = 0,
+    desc = 'Sync vim.pack managed list to current',
+})
+
+cmd('PackUpdate', function()
+    vim.pack.update()
+end, {
+    nargs = 0,
+    desc = 'Update vim.pack managed plugins',
+})
+
 vim.pack.add {
     -- neovim theme
     'https://github.com/rebelot/kanagawa.nvim',
@@ -12,7 +32,7 @@ vim.pack.add {
 
     'https://github.com/kylechui/nvim-surround',
     'https://github.com/stevearc/oil.nvim',
-    'https://github.com/norcalli/nvim-colorizer.lua',
+    'https://github.com/brenoprata10/nvim-highlight-colors',
     'https://github.com/ibhagwan/fzf-lua',
     'https://github.com/tpope/vim-sleuth',
     'https://github.com/mason-org/mason.nvim',
@@ -20,7 +40,7 @@ vim.pack.add {
 }
 
 require('mason').setup {}
-require('colorizer').setup { '*' }
+require('nvim-highlight-colors').setup { '*' }
 require('oil').setup {}
 require('nvim-surround').setup {}
 
