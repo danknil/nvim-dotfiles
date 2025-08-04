@@ -15,6 +15,7 @@ vim.pack.add {
     'https://github.com/ibhagwan/fzf-lua',
     'https://github.com/tpope/vim-sleuth',
     'https://github.com/mason-org/mason.nvim',
+    'https://github.com/chomosuke/typst-preview.nvim',
 }
 
 require('mason').setup {}
