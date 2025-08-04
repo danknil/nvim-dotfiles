@@ -2,8 +2,10 @@ local utils = require 'utils'
 local fzf = require 'fzf-lua'
 
 fzf.setup {
-    {'ivy'}
+    { 'ivy' },
 }
+
+fzf.register_ui_select()
 
 utils.map({
     n = {

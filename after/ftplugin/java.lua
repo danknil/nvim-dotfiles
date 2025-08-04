@@ -107,11 +107,7 @@ local config = {
         '-data',
         workspace_folder,
         '-Xmx4g',
-        '--jvm-arg=-javaagent:'
-            .. home
-            .. '/.local/share/eclipse/lombok.jar',
-
-
+        '--jvm-arg=-javaagent:' .. home .. '/.local/share/eclipse/lombok.jar',
     },
 }
 
