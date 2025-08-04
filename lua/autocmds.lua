@@ -6,7 +6,13 @@ local disable_ft = { 'netrw', 'zsh', 'oil' }
 autocmd('PackChanged', {
     callback = function(ev)
         -- FIXME: should build blink.cmp nightly???
-    end
+    end,
+})
+
+autocmd('TextYankPost', {
+    callback = function()
+        vim.hl.on_yank { higroup = 'Visual', timeout = 300 }
+    end,
 })
 
 -- auto mkdir
