@@ -17,20 +17,6 @@ function M.get_highest_error_severity()
     end
 end
 
-function M.lsp_formatting()
-    vim.lsp.buf.format {
-        async = true,
-        filter = function(client)
-            local generators = require('null-ls.generators').get_available(
-                vim.bo.filetype,
-                require('null-ls.methods').internal.FORMATTING
-            )
-            -- disable null-ls if no formatters found and enable only null-ls if found at least one
-            return #generators > 0 and client.name == 'null-ls' or client.name ~= 'null-ls'
-        end,
-    }
-end
-
 function M.autocmd_on_type(tb)
     if type(tb.filetype) == 'string' then
         tb.filetype = { tb.filetype }

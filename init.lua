@@ -16,6 +16,7 @@ o.numberwidth = 2
 
 o.signcolumn = 'yes'
 
+-- added default tab settings
 o.expandtab = true
 o.softtabstop = 4
 o.tabstop = 4
@@ -27,8 +28,7 @@ o.undofile = true
 o.scrolloff = 8
 o.sidescrolloff = 8
 
-o.foldexpr = 'nvim_treesitter#foldexpr()'
-o.foldmethod = 'expr'
+o.foldlevel = 99
 o.foldlevelstart = 99
 
 o.list = true
