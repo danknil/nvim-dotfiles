@@ -1,3 +1,5 @@
+require('luasnip').setup {}
+require('luasnip.loaders.from_lua').load { paths = '~/.config/nvim/snips/' }
 require('blink.cmp').setup {
     completion = {
         accept = { auto_brackets = { enabled = false } },
@@ -16,11 +18,16 @@ require('blink.cmp').setup {
                 gap = 6,
                 treesitter = { 'lsp' },
                 columns = {
-                    { 'kind_icon', 'label', gap = 2, },
+                    { 'kind_icon', 'label', gap = 2 },
                     { 'label_description', 'kind', gap = 1 },
                 },
             },
         },
     },
-    signature = { enabled = true },
+    snippets = {
+        preset = 'luasnip',
+    },
+    sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+    },
 }

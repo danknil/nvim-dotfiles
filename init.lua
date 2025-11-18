@@ -51,15 +51,6 @@ vim.cmd [[
 
 utils.map({
     n = {
-        ['<leader>e'] = function()
-            local bufdir = utils.get_curr_bufdir()
-            return ':e ' .. bufdir
-        end,
-    },
-}, { noremap = true, expr = true })
-
-utils.map({
-    n = {
         ['<space>'] = '<cmd>noh<cr>',
         ['<C-c>'] = '<cmd>%y+<cr>',
         ['<Tab>'] = '<cmd>bn<cr>',
@@ -70,6 +61,10 @@ utils.map({
         ['<leader>p'] = '"+p',
         ['<leader>P'] = '"+P',
         ['<leader>d'] = '"+d',
+        ['C-h'] = '<C-w>h',
+        ['C-j'] = '<C-w>j',
+        ['C-k'] = '<C-w>k',
+        ['C-l'] = '<C-w>l',
     },
     v = {
         ['<leader>y'] = '"+y',
@@ -84,5 +79,11 @@ utils.map({
         ['<leader>p'] = '"+p',
         ['<leader>P'] = '"+P',
         ['<leader>d'] = '"+d',
+    },
+    t = {
+        ['C-h'] = '<C-\\><C-o><C-w>h',
+        ['C-j'] = '<C-\\><C-o><C-w>j',
+        ['C-k'] = '<C-\\><C-o><C-w>k',
+        ['C-l'] = '<C-\\><C-o><C-w>l',
     },
 }, { noremap = true, silent = true })
