@@ -28,6 +28,9 @@ o.undofile = true
 o.scrolloff = 8
 o.sidescrolloff = 8
 
+o.mouse = "nv"
+o.mousemodel = "extend"
+
 o.foldlevel = 99
 o.foldlevelstart = 99
 
@@ -43,11 +46,6 @@ require 'plugins'
 require 'statusline'
 
 require 'lsp'
-
-vim.cmd [[
-	colorscheme kanagawa-dragon
-	:hi statusline guibg=none
-]]
 
 utils.map({
     n = {

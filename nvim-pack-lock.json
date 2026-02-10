@@ -18,13 +18,13 @@
       "rev": "578a11f",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
-    "kanagawa.nvim": {
-      "rev": "aef7f5c",
-      "src": "https://github.com/rebelot/kanagawa.nvim"
-    },
     "mason.nvim": {
       "rev": "44d1e90",
       "src": "https://github.com/mason-org/mason.nvim"
+    },
+    "neovim": {
+      "rev": "cf2a288696b03d0934da713d66c6d71557b5c997",
+      "src": "https://github.com/rose-pine/neovim.git"
     },
     "nvim-highlight-colors": {
       "rev": "e0c4a58",
@@ -41,10 +41,6 @@
     "nvim-treesitter": {
       "rev": "7c141614",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
-    },
-    "nvim-treesitter-textobjects": {
-      "rev": "5ca4aaa",
-      "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
     },
     "plenary.nvim": {
       "rev": "b9fd522",

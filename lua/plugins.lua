@@ -2,27 +2,26 @@ local cmd = vim.api.nvim_create_user_command
 
 local plugins = {
     -- lib req
-    'https://github.com/nvim-lua/plenary.nvim',
-    'https://github.com/folke/snacks.nvim',
+    { src = 'https://github.com/nvim-lua/plenary.nvim' },
+    { src = 'https://github.com/folke/snacks.nvim' },
     -- neovim theme
-    'https://github.com/rebelot/kanagawa.nvim',
+    { src = 'https://github.com/rose-pine/neovim.git' },
     -- inner lsp setup
-    'https://github.com/stevearc/conform.nvim',
+    { src = 'https://github.com/stevearc/conform.nvim' },
     { src = 'https://github.com/L3MON4D3/LuaSnip', version = vim.version.range 'v2.*' },
     { src = 'https://github.com/Saghen/blink.cmp', version = vim.version.range '1.*' },
 
     -- treesitter
-    'https://github.com/nvim-treesitter/nvim-treesitter',
-    'https://github.com/nvim-treesitter/nvim-treesitter-textobjects',
+    { src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
 
-    'https://github.com/chrisgrieser/nvim-origami',
-    'https://github.com/kylechui/nvim-surround',
-    'https://github.com/mikavilpas/yazi.nvim',
-    'https://github.com/brenoprata10/nvim-highlight-colors',
-    'https://github.com/ibhagwan/fzf-lua',
-    'https://github.com/tpope/vim-sleuth',
-    'https://github.com/mason-org/mason.nvim',
-    'https://github.com/chomosuke/typst-preview.nvim',
+    { src = 'https://github.com/chrisgrieser/nvim-origami' },
+    { src = 'https://github.com/kylechui/nvim-surround' },
+    { src = 'https://github.com/mikavilpas/yazi.nvim' },
+    { src = 'https://github.com/brenoprata10/nvim-highlight-colors' },
+    { src = 'https://github.com/ibhagwan/fzf-lua' },
+    { src = 'https://github.com/tpope/vim-sleuth' },
+    { src = 'https://github.com/mason-org/mason.nvim' },
+    { src = 'https://github.com/chomosuke/typst-preview.nvim' },
 }
 
 cmd('PackSync', function()
@@ -53,10 +52,8 @@ require('nvim-surround').setup {}
 require('snacks').setup {
     input = { enabled = true },
 }
-require('nvim-treesitter.configs').setup {
-    highlight = { enable = true },
-}
 
 -- longer setups
 require 'plugins.cmp'
 require 'plugins.files'
+require 'plugins.theme'
